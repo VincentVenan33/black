@@ -65,6 +65,16 @@ class PageController extends Controller
     }
 
     /**
+     * Display aboutus page
+     *
+     * @return \Illuminate\View\View
+     */
+    public function aboutus()
+    {
+        return view('pages.aboutus');
+    }
+
+    /**
      * Display upgrade page
      *
      * @return \Illuminate\View\View

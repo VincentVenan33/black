@@ -32,6 +32,8 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::get('tables', ['as' => 'pages.tables', 'uses' => 'App\Http\Controllers\PageController@tables']);
 		Route::get('typography', ['as' => 'pages.typography', 'uses' => 'App\Http\Controllers\PageController@typography']);
 		Route::get('upgrade', ['as' => 'pages.upgrade', 'uses' => 'App\Http\Controllers\PageController@upgrade']);
+		Route::get('aboutus', ['as' => 'pages.aboutus', 'uses' => 'App\Http\Controllers\PageController@aboutus']);
+		Route::get('pasien/view', ['as' => 'pages.viewpasien', 'uses' => 'App\Http\Controllers\PasienController@viewpasien']);
 });
 
 Route::group(['middleware' => 'auth'], function () {

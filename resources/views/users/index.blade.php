@@ -31,7 +31,7 @@
         <meta property="og:image" content="https://s3.amazonaws.com/creativetim_bucket/products/164/original/opt_blk_laravel_thumbnail.jpg?1561102244" />
         <meta property="og:description" content="Black Dashboard Laravel is a beautiful Bootstrap 4 admin dashboard with a large number of components, designed to look beautiful and organized. If you are looking for a tool to manage and visualize data about your business, this dashboard is the thing for you." />
         <meta property="og:site_name" content="Creative Tim" />
-        <title>{{ config('app.name', 'Black Dashboard Laravel - Free Laravel Preset') }}</title>
+        <!-- <title>{{ config('app.name', 'Black Dashboard Laravel - Free Laravel Preset') }}</title> -->
         <!-- Favicon -->
         <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('black') }}/img/apple-icon.png">
         <link rel="icon" type="image/png" href="{{ asset('black') }}/img/favicon.png">
@@ -76,7 +76,7 @@
                                                 <span class="nav-link-text" >{{ __('Laravel Examples') }}</span>
                                                 <b class="caret mt-1"></b>
                                             </a>
-                            
+
                                             <div class="collapse show" id="laravel-examples">
                                                 <ul class="nav pl-4">
                                                     <li >
@@ -139,7 +139,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            
+
             <div class="main-panel">
                     <nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
                             <div class="container-fluid">
@@ -227,7 +227,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
 <div class="modal modal-search fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModal" aria-hidden="true">
 <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -257,7 +257,7 @@
                 </div>
             </div>
             <div class="card-body">
-                
+
                 <div class="">
                     <table class="table tablesorter " id="">
                         <thead class=" text-primary">
@@ -290,7 +290,7 @@
             </div>
             <div class="card-footer py-4">
                 <nav class="d-flex justify-content-end" aria-label="...">
-                    
+
                 </nav>
             </div>
         </div>

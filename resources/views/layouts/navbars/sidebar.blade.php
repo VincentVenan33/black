@@ -59,6 +59,12 @@
                     <p>{{ __('Table List') }}</p>
                 </a>
             </li>
+            <li @if ($pageSlug == 'viewpasien') class="active " @endif>
+                <a href="{{ route('pages.viewpasien') }}">
+                    <i class="tim-icons icon-puzzle-10"></i>
+                    <p>{{ __('Pasien List') }}</p>
+                </a>
+            </li>
             <li @if ($pageSlug == 'typography') class="active " @endif>
                 <a href="{{ route('pages.typography') }}">
                     <i class="tim-icons icon-align-center"></i>
