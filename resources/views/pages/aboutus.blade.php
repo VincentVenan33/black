@@ -14,45 +14,30 @@
             <tbody>
                 <tr>
                   <td><h3 class="text-primary mb-0 mt-3">Instagram</h3></td>
-                </tr>
-                <tr>
-                    <td>
+                  <td class="text-center">
                         <a href="https://www.instagram.com/akun-instagram-anda" target="_blank">
                             <i class="fab fa-instagram text-info"></i>
                             blabla.doctor
                         </a></td>
-                    <td class="text-center">
-                        <a href="https://www.instagram.com/akun-instagram-anda" target="_blank">
-                            <i class="fab fa-instagram text-info"></i>
-                        </a>
                   </td>
-                  <td class="text-center"></td>
                 </tr>
                 <tr>
                     <td>
                         <h3 class="text-primary mb-0 mt-3">Contact</h3>
                     </td>
-                </tr>
-              <tr>
-                    <td>No Telepon</td>
                     <td class="text-center">
                         <i class="fas fa-phone-alt"></i> <a href="tel:+628123456789" class="text-primary">+62 812-3456-789</a>
                     </td>
-                    <td class="text-center"></td>
-              </tr>
+                </tr>
               <tr>
                     <td>
                         <h3 class="text-primary mb-0 mt-3">Email</h3>
                     </td>
-                </tr>
-                <tr>
-                    <td>RS@gmail.com</td>
                     <td class="text-center">
                         <a href="mailto:RS@gmail.com" class="text-info">
                             <i class="fas fa-envelope"></i>
                         </a>
                     </td>
-                    <td class="text-center"></td>
                 </tr>
             </tbody>
           </table>
