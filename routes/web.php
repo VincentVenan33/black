@@ -32,8 +32,17 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::get('tables', ['as' => 'pages.tables', 'uses' => 'App\Http\Controllers\PageController@tables']);
 		Route::get('typography', ['as' => 'pages.typography', 'uses' => 'App\Http\Controllers\PageController@typography']);
 		Route::get('upgrade', ['as' => 'pages.upgrade', 'uses' => 'App\Http\Controllers\PageController@upgrade']);
+        //about us
 		Route::get('aboutus', ['as' => 'pages.aboutus', 'uses' => 'App\Http\Controllers\PageController@aboutus']);
+
+        //pasien
 		Route::get('pasien/view', ['as' => 'pages.viewpasien', 'uses' => 'App\Http\Controllers\PasienController@viewpasien']);
+		Route::get('pasien/add', ['as' => 'pages.addpasien', 'uses' => 'App\Http\Controllers\PasienController@addpasien']);
+		Route::post('pasien/save', ['as' => 'pages.savepasien', 'uses' => 'App\Http\Controllers\PasienController@savepasien']);
+		Route::get('pasien/change/{id}', ['as' => 'pages.changepasien', 'uses' => 'App\Http\Controllers\PasienController@changepasien']);
+		Route::post('pasien/update', ['as' => 'pages.updatepasien', 'uses' => 'App\Http\Controllers\PasienController@updatepasien']);
+		Route::get('pasien/delete/{id}', ['as' => 'pages.deletepasien', 'uses' => 'App\Http\Controllers\PasienController@deletepasien']);
+		Route::get('pasien/detail/{id}', ['as' => 'pages.detailpasien', 'uses' => 'App\Http\Controllers\PasienController@detailpasien']);
 });
 
 Route::group(['middleware' => 'auth'], function () {
@@ -42,4 +51,3 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
 });
-

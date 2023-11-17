@@ -13,8 +13,18 @@ return new class extends Migration
     {
         Schema::create('pasien', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
+            $table->string('nomorrekammedis');
+            $table->string('nama');
+            $table->string('tempat');
+            $table->date('tanggallahir');
+            $table->string('jeniskelamin');
+            $table->string('alamatlengkap');
+            $table->string('pendidikan');
+            $table->string('agama');
+            $table->string('pekerjaan');
+            $table->string('status');
+            $table->string('notelp');
+            $table->string('poli');
             $table->timestamps();
         });
     }
@@ -24,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('pasien');
     }
 };
