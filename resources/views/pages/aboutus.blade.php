@@ -6,6 +6,7 @@
     <div class="card card-upgrade">
       <div class="card-header text-center">
         <h4 class="card-title">About US</h3>
+          <h4 class="card-category">Yayasan Santa Maria Lourdes Larantuka, Rumah Sakit Bunda Pengharapan</h4>
           <p class="card-category">Need help? Contact Our Social Media </p>
       </div>
       <div class="card-body">
@@ -15,10 +16,11 @@
                 <tr>
                   <td><h3 class="text-primary mb-0 mt-3">Instagram</h3></td>
                   <td class="text-center">
-                        <a href="https://www.instagram.com/akun-instagram-anda" target="_blank">
+                        <a href="https://www.instagram.com/rsbundapengharapan" target="_blank">
                             <i class="fab fa-instagram text-info"></i>
-                            blabla.doctor
-                        </a></td>
+                            rsbundapengharapan
+                        </a>
+                    </td>
                   </td>
                 </tr>
                 <tr>
@@ -26,17 +28,28 @@
                         <h3 class="text-primary mb-0 mt-3">Contact</h3>
                     </td>
                     <td class="text-center">
-                        <i class="fas fa-phone-alt"></i> <a href="tel:+628123456789" class="text-primary">+62 812-3456-789</a>
+                        <i class="fas fa-phone-alt"></i> <a href="tel:0821 9957 2930 / 0971 325906" class="text-primary">0821 9957 2930 / 0971 325906</a>
                     </td>
                 </tr>
-              <tr>
+                <tr>
                     <td>
                         <h3 class="text-primary mb-0 mt-3">Email</h3>
                     </td>
                     <td class="text-center">
-                        <a href="mailto:RS@gmail.com" class="text-info">
+                        <!-- <a href="Gmailto:rs.bunda.pengharapan@gmail.com" class="text-info"> -->
+                        <a href="Gmailto:rs.bunda.pengharapan@gmail.com" class="text-primary">rs.bunda.pengharapan@gmail.com</a>
                             <i class="fas fa-envelope"></i>
                         </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h3 class="text-primary mb-0 mt-3">Alamat</h3>
+                    </td>
+                    <td class="text-center">
+                        <span>
+                            Jln tujuh wali-wali RT 020 RW 004, kamundu, Distrik Merauke, Kabupaten Merauke, Papua Selatan
+                        </span>
                     </td>
                 </tr>
             </tbody>
