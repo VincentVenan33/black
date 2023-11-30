@@ -1,8 +1,12 @@
 <div class="sidebar">
     <div class="sidebar-wrapper">
         <div class="logo">
-            <a href="#" class="simple-text logo-mini">{{ __('BD') }}</a>
-            <a href="#" class="simple-text logo-normal">{{ __('Black Dashboard') }}</a>
+            <a href="#" class="simple-text logo-mini">
+                <img src="{{ asset('black/img/392954327_650574423596082_8133245612540985038_n.jpg') }}" alt="Logo Rumah Sakit Bunda Pengharapan Merauke">
+            </a>
+            <div class="marquee-container">
+                <a href="#" class="simple-title logo-normal marquee-text">{{ __('Rumah Sakit Bunda Pengharapan Merauke') }}</a>
+            </div>
         </div>
         <ul class="nav">
             <li @if ($pageSlug == 'dashboard') class="active " @endif>

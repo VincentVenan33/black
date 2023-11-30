@@ -73,6 +73,25 @@ html {
   width: device-width;
 }
 
+.marquee-container {
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.marquee-text {
+    display: inline-block;
+    animation: marquee 8s linear infinite;
+}
+
+@keyframes marquee {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(-200%);
+    }
+}
+
 article,
 aside,
 figcaption,
@@ -96,6 +115,13 @@ body {
   text-align: left;
   background-color: #1e1e2f;
 }
+
+.bg img {
+    position: absolute;
+    width: 100%;
+    left: 0px;
+    z-index: -1;
+  }
 
 [tabindex="-1"]:focus {
   outline: 0 !important;
@@ -15196,6 +15222,18 @@ table.tablesorter thead tr .headerSortDown {
   font-weight: 400;
   line-height: 30px;
   overflow: hidden;
+}
+
+.simple-title{
+text-transform: uppercase;
+  padding: 0.5rem 0;
+  display: block;
+  white-space: nowrap;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 400;
+  line-height: 30px;
+  /* overflow: hidden; */
 }
 
 .sidebar .logo-tim,

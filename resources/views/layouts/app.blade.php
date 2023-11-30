@@ -21,6 +21,9 @@
         <link href="{{ asset('black') }}/css/theme.css" rel="stylesheet" />
     </head>
     <body class="{{ $class ?? '' }}">
+        {{-- <div class="bg">
+            <img src="{{ asset('black/img/bg1.jpg') }}" alt="background">
+        </div> --}}
         @auth()
             <div class="wrapper">
                     @include('layouts.navbars.sidebar')
