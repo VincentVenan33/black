@@ -8,8 +8,8 @@
                     <i class="tim-icons icon-wifi"></i>
                 </div>
                 <div class="description">
-                    <h3 class="info-title">{{ __('Marketing') }}</h3>
-                    <p class="description">
+                    <h3 class="info-title text-black">{{ __('Marketing') }}</h3>
+                    <p class="description text-black">
                         {{ __('We\'ve created the marketing campaign of the website. It was a very interesting collaboration.') }}
                     </p>
                 </div>
@@ -19,8 +19,8 @@
                     <i class="tim-icons icon-triangle-right-17"></i>
                 </div>
                 <div class="description">
-                    <h3 class="info-title">{{ __('Fully Coded in HTML5') }}</h3>
-                    <p class="description">
+                    <h3 class="info-title text-black">{{ __('Fully Coded in HTML5') }}</h3>
+                    <p class="description text-black">
                         {{ __('We\'ve developed the website with HTML5 and CSS3. The client has access to the code using GitHub.') }}
                     </p>
                 </div>
@@ -30,8 +30,8 @@
                     <i class="tim-icons icon-trophy"></i>
                 </div>
                 <div class="description">
-                    <h3 class="info-title">{{ __('Built Audience') }}</h3>
-                    <p class="description">
+                    <h3 class="info-titlez">{{ __('Built Audience') }}</h3>
+                    <p class="description" style="color: white;">
                         {{ __('There is also a Fully Customizable CMS Admin Dashboard for this product.') }}
                     </p>
                 </div>

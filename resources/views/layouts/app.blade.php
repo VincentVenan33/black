@@ -21,6 +21,14 @@
         <link href="{{ asset('black') }}/css/theme.css" rel="stylesheet" />
     </head>
     <body class="{{ $class ?? '' }}">
+        <div class="bg-container">
+            <div class="bg1 active">
+                <img src="{{ asset('black/img/bg1.jpg') }}" alt="background">
+            </div>
+            <div class="bg2">
+                <img src="{{ asset('black/img/bg2.jpg') }}" alt="background">
+            </div>
+        </div>
         @auth()
             <div class="wrapper">
                     @include('layouts.navbars.sidebar')
@@ -105,6 +113,27 @@
         @stack('js')
 
         <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                let currentBg = 2; // Ubah nilai awal agar gambar bg1 muncul secara langsung
+
+                function changeBackground() {
+                    const bg1 = document.querySelector('.bg1');
+                    const bg2 = document.querySelector('.bg2');
+
+                    if (currentBg === 1) {
+                        bg1.classList.add('active');
+                        bg2.classList.remove('active');
+                        currentBg = 2;
+                    } else {
+                        bg1.classList.remove('active');
+                        bg2.classList.add('active');
+                        currentBg = 1;
+                    }
+                }
+
+                setInterval(changeBackground, 5000);
+            });
+
             $(document).ready(function() {
                 $().ready(function() {
                     $sidebar = $('.sidebar');
