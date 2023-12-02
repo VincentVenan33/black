@@ -68,6 +68,11 @@
                     <i class="tim-icons icon-puzzle-10"></i>
                     <p>{{ __('Pasien List') }}</p>
                 </a>
+            </li><li @if ($pageSlug == 'viewpendaftaran') class="active " @endif>
+                <a href="{{ route('pages.viewpendaftaran') }}">
+                    <i class="tim-icons icon-puzzle-10"></i>
+                    <p>{{ __('Pendaftaran Pasien') }}</p>
+                </a>
             </li>
             <li @if ($pageSlug == 'typography') class="active " @endif>
                 <a href="{{ route('pages.typography') }}">
