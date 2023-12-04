@@ -37,7 +37,7 @@ class PasienController extends Controller
             "pekerjaan" => "required|min:3",
             "status" => "required",
             "notelp" => "required",
-            "poli" => "required|min:3",
+            "poli" => "required",
         ]);
         $pasien_data = PasienModel::create([
             "nomorrekammedis" => $request->nomorrekammedis,
@@ -87,7 +87,7 @@ class PasienController extends Controller
             "pekerjaan" => "required|min:3",
             "status" => "required",
             "notelp" => "required",
-            "poli" => "required|min:3",
+            "poli" => "required",
 
         ]);
         $pasien_data = PasienModel::find($request->id);

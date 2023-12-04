@@ -117,7 +117,14 @@
 
                         <div class="form-group{{ $errors->has('poli') ? ' has-danger' : '' }}">
                             <label>{{ __('Poli') }}</label>
-                            <input type="text" name="poli" class="form-control{{ $errors->has('poli') ? ' is-invalid' : '' }}" placeholder="{{ __('Poli') }}" value="{{ old('poli', $pasien->poli) }}">
+                            <select name="poli" class="form-control{{ $errors->has('poli') ? ' is-invalid' : '' }}">
+                                <option style="color: black;" value="" disabled>{{ __('Pilih Poli') }}</option>
+                                <option style="color: black;" value="Penyakit Dalam" {{ old('poli', $pasien->poli) == 'Penyakit Dalam' ? 'selected' : '' }}>{{ __('Penyakit Dalam') }}</option>
+                                <option style="color: black;" value="Bedah" {{ old('poli', $pasien->poli) == 'Bedah' ? 'selected' : '' }}>{{ __('Bedah') }}</option>
+                                <option style="color: black;" value="Anak" {{ old('poli', $pasien->poli) == 'Anak' ? 'selected' : '' }}>{{ __('Anak') }}</option>
+                                <option style="color: black;" value="Obgin" {{ old('poli', $pasien->poli) == 'Obgin' ? 'selected' : '' }}>{{ __('Obgin') }}</option>
+                                <option style="color: black;" value="Paru-Paru" {{ old('poli', $pasien->poli) == 'Paru-Paru' ? 'selected' : '' }}>{{ __('Paru-Paru') }}</option>
+                            </select>
                             @include('alerts.feedback', ['field' => 'poli'])
                         </div>
 

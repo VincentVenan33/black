@@ -44,15 +44,7 @@
 
                         <div class="form-group{{ $errors->has('jeniskelamin') ? ' has-danger' : '' }}">
                             <label>{{ __('Jenis Kelamin') }}</label>
-                            <select name="jeniskelamin" class="form-control{{ $errors->has('jeniskelamin') ? ' is-invalid' : '' }}" disabled style="color: white;">
-                                <option value="" disabled>{{ __('Pilih Jenis Kelamin') }}</option>
-                                <option value="Laki-laki" {{ old('jeniskelamin', $pasien->jeniskelamin) == 'Laki-laki' ? 'selected' : '' }}>
-                                    {{ __('Laki-laki') }}
-                                </option>
-                                <option value="Perempuan" {{ old('jeniskelamin', $pasien->jeniskelamin) == 'Perempuan' ? 'selected' : '' }}>
-                                    {{ __('Perempuan') }}
-                                </option>
-                            </select>
+                            <input style="color: white;" type="text" name="jeniskelamin" class="form-control{{ $errors->has('jeniskelamin') ? ' is-invalid' : '' }}" placeholder="{{ __('Jenis Kelamin') }}" value="{{ old('jeniskelamin', $pasien->jeniskelamin) }}" disabled>
                             @include('alerts.feedback', ['field' => 'jeniskelamin'])
                         </div>
 
@@ -64,30 +56,7 @@
 
                         <div class="form-group{{ $errors->has('pendidikan') ? ' has-danger' : '' }}">
                             <label>{{ __('Pendidikan Terakhir') }}</label>
-                            <select name="pendidikan" class="form-control{{ $errors->has('pendidikan') ? ' is-invalid' : '' }}" disabled style="color: white;">
-                                <option value="" disabled>{{ __('Pilih Pendidikan') }}</option>
-                                <option value="SD" {{ old('pendidikan', $pasien->pendidikan) == 'SD' ? 'selected' : '' }}>
-                                    {{ __('SD') }}
-                                </option>
-                                <option value="SMP" {{ old('pendidikan', $pasien->pendidikan) == 'SMP' ? 'selected' : '' }}>
-                                    {{ __('SMP') }}
-                                </option>
-                                <option value="SMA/SMK" {{ old('pendidikan', $pasien->pendidikan) == 'SMA/SMK' ? 'selected' : '' }}>
-                                    {{ __('SMA/SMK') }}
-                                </option>
-                                <option value="Diploma" {{ old('pendidikan', $pasien->pendidikan) == 'Diploma' ? 'selected' : '' }}>
-                                    {{ __('Diploma') }}
-                                </option>
-                                <option value="S1" {{ old('pendidikan', $pasien->pendidikan) == 'S1' ? 'selected' : '' }}>
-                                    {{ __('S1') }}
-                                </option>
-                                <option value="S2" {{ old('pendidikan', $pasien->pendidikan) == 'S2' ? 'selected' : '' }}>
-                                    {{ __('S2') }}
-                                </option>
-                                <option value="S3" {{ old('pendidikan', $pasien->pendidikan) == 'S3' ? 'selected' : '' }}>
-                                    {{ __('S3') }}
-                                </option>
-                            </select>
+                            <input style="color: white;" type="text" name="pendidikan" class="form-control{{ $errors->has('pendidikan') ? ' is-invalid' : '' }}" placeholder="{{ __('Pendidikan') }}" value="{{ old('pendidikan', $pasien->pendidikan) }}" disabled>
                             @include('alerts.feedback', ['field' => 'pendidikan'])
                         </div>
 
@@ -105,18 +74,7 @@
 
                         <div class="form-group{{ $errors->has('status') ? ' has-danger' : '' }}">
                             <label>{{ __('Status') }}</label>
-                            <select name="status" class="form-control{{ $errors->has('status') ? ' is-invalid' : '' }}" disabled style="color: white;">
-                                <option value="" disabled>{{ __('Pilih Status') }}</option>
-                                <option value="Menikah" {{ old('status', $pasien->status) == 'Menikah' ? 'selected' : '' }}>
-                                    {{ __('Menikah') }}
-                                </option>
-                                <option value="Belum Menikah" {{ old('status', $pasien->status) == 'Belum Menikah' ? 'selected' : '' }}>
-                                    {{ __('Belum Menikah') }}
-                                </option>
-                                <option value="Cerai" {{ old('status', $pasien->status) == 'Cerai' ? 'selected' : '' }}>
-                                    {{ __('Cerai') }}
-                                </option>
-                            </select>
+                            <input style="color: white;" type="text" name="status" class="form-control{{ $errors->has('status') ? ' is-invalid' : '' }}" placeholder="{{ __('Status') }}" value="{{ old('status', $pasien->status) }}" disabled>
                             @include('alerts.feedback', ['field' => 'status'])
                         </div>
 
