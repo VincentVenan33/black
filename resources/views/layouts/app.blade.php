@@ -28,6 +28,9 @@
             <div class="bg2">
                 <img src="{{ asset('black/img/bg2.jpg') }}" alt="background">
             </div>
+            <div class="bg3">
+                <img style="margin: 60% 0" src="{{ asset('black/img/bg3.png') }}" alt="background">
+            </div>
         </div>
         @auth()
             <div class="wrapper">
@@ -101,9 +104,9 @@
         <script src="{{ asset('black') }}/js/plugins/perfect-scrollbar.jquery.min.js"></script>
         <!--  Google Maps Plugin    -->
         <!-- Place this tag in your head or just before your close body tag. -->
-        {{-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script> --}}
+        <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
         <!-- Chart JS -->
-        {{-- <script src="{{ asset('black') }}/js/plugins/chartjs.min.js"></script> --}}
+        <script src="{{ asset('black') }}/js/plugins/chartjs.min.js"></script>
         <!--  Notifications Plugin    -->
         <script src="{{ asset('black') }}/js/plugins/bootstrap-notify.js"></script>
 
@@ -114,7 +117,7 @@
 
         <script>
             document.addEventListener("DOMContentLoaded", function() {
-                let currentBg = 2; // Ubah nilai awal agar gambar bg1 muncul secara langsung
+                let currentBg = 2;
 
                 function changeBackground() {
                     const bg1 = document.querySelector('.bg1');
