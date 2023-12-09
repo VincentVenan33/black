@@ -8,31 +8,22 @@
         <h4 class="card-title"> Pendaftaran Pasien</h4>
       </div>
       <div class="card-body">
-        <!-- <a class="btn btn-success" href="{{ route('pages.addpasien') }}"><i class="tim-icons icon-simple-add"></i> Tambah Pasien</a><br><br> -->
+        <a class="btn btn-success" href="{{ route('pages.addpendaftaran') }}"><i class="tim-icons icon-simple-add"></i> Daftar</a><br><br>
         <div class="table-responsive">
           <table class="table tablesorter " id="">
             <thead class=" text-primary">
               <tr>
                 <th>
-                  No
-                </th>
-                <th>
-                  Nomor Rekam Medis
-                </th>
-                <th>
-                  Nama
+                  Nama Pasien
                 </th>
                 <th>
                   Poli
                 </th>
                 <th>
-                   Di buat pada
+                  Tanggal Daftar
                 </th>
                 <th>
-                   Di ubah pada
-                </th>
-                <th>
-                   Action
+                   Jadwal
                 </th>
               </tr>
             </thead>

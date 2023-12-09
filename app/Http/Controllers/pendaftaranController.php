@@ -16,12 +16,12 @@ class PendaftaranController extends Controller
         return view('pendaftaran.viewpendaftaran', $data);
     }
 
-    // public function addpasien()
-    // {
-    //     $data = array();
-    //     $data['title'] = "Tambah Pasien";
-    //     return view('pasien.addpasien', $data);
-    // }
+    public function addpendaftaran()
+    {
+        $data = array();
+        $data['title'] = "Tambah pendaftaran";
+        return view('pendaftaran.addpendaftaran', $data);
+    }
 
     // public function savepasien(Request $request)
     // {
