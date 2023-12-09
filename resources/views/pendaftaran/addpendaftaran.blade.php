@@ -7,7 +7,7 @@
                 <div class="card-header">
                     <h5 class="title">{{ __('Pendaftaran Pasien') }}</h5>
                 </div>
-                <!-- <form method="post" action="{{ route('pages.savepasien') }}" enctype="multipart/form-data"> -->
+                <form method="post" action="{{ route('pages.savependaftaran') }}" enctype="multipart/form-data">
                     <div class="card-body">
                         @csrf
                         @include('alerts.success')
@@ -53,7 +53,7 @@
                                 <button type="submit" class="btn btn-fill btn-primary"><i class="fas fa-save"></i> {{ __('Save') }}</button>
                             </div>
                             <div class="card-footer">
-                                <a class="btn btn-fill btn-primary" href="{{ route('pages.viewpasien') }}"><i class="tim-icons icon-minimal-left"></i> {{ __('Back') }}</a><br><br>
+                                <a class="btn btn-fill btn-primary" href="{{ route('pages.viewpendaftaran') }}"><i class="tim-icons icon-minimal-left"></i> {{ __('Back') }}</a><br><br>
                             </div>
                         </div>
                     </div>

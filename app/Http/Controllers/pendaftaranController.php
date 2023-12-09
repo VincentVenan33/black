@@ -23,42 +23,26 @@ class PendaftaranController extends Controller
         return view('pendaftaran.addpendaftaran', $data);
     }
 
-    // public function savepasien(Request $request)
-    // {
-    //     $request->validate([
-    //         "nomorrekammedis" => "required|min:5",
-    //         "nama" => "required|min:3",
-    //         "tempat" => "required|min:3",
-    //         "tanggallahir" => "required",
-    //         "jeniskelamin" => "required",
-    //         "alamatlengkap" => "required|min:5",
-    //         "pendidikan" => "required",
-    //         "agama" => "required",
-    //         "pekerjaan" => "required|min:3",
-    //         "status" => "required",
-    //         "notelp" => "required",
-    //         "poli" => "required|min:3",
-    //     ]);
-    //     $pasien_data = PendaftaranModel::create([
-    //         "nomorrekammedis" => $request->nomorrekammedis,
-    //         "nama" => $request->nama,
-    //         "tempat" => $request->tempat,
-    //         "tanggallahir" => $request->tanggallahir,
-    //         "jeniskelamin" => $request->jeniskelamin,
-    //         "alamatlengkap" => $request->alamatlengkap,
-    //         "pendidikan" => $request->pendidikan,
-    //         "agama" => $request->agama,
-    //         "pekerjaan" => $request->pekerjaan,
-    //         "status" => $request->status,
-    //         "notelp" => $request->notelp,
-    //         "poli" => $request->poli,
-    //     ]);
-    //     if($pasien_data){
-    //         return redirect()->route('pages.viewpasien')->with('message','Data added Successfully');
-    //     }else{
-    //         return redirect()->route('pasien.viewpasien')->with('error','Data added Error');
-    //     }
-    // }
+    public function savependaftaran(Request $request)
+    {
+        $request->validate([
+            "namapasien" => "required|min:3",
+            "poli" => "required",
+            "tanggaldaftar" => "required",
+            "jadwal" => "required",
+        ]);
+        $pendaftaran_data = PendaftaranModel::create([
+            "namapasien" => $request->namapasien,
+            "poli" => $request->poli,
+            "tanggaldaftar" => $request->tanggaldaftar,
+            "jadwal" => $request->jadwal,
+        ]);
+        if($pendaftaran_data){
+            return redirect()->route('pages.viewpendaftaran')->with('message','Data added Successfully');
+        }else{
+            return redirect()->route('pendaftaran.viewpendaftaran')->with('error','Data added Error');
+        }
+    }
 
     // public function changepasien($id)
     // {
