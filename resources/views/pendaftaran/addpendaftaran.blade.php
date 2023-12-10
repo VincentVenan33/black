@@ -30,47 +30,9 @@
                         </div>
                         <div class="form-group{{ $errors->has('jadwal') ? ' has-danger' : '' }}">
                             <label>{{ __('Jadwal Dokter') }}</label>
-                            <select name="jadwal" class="form-control{{ $errors->has('jadwal') ? ' is-invalid' : '' }}">
+                            <select id="Senin" name="jadwal" class="form-control{{ $errors->has('jadwal') ? ' is-invalid' : '' }}">
                                 <option style="color: black;" value="" selected disabled>{{ __('Pilih Jadwal') }}</option>
-                                <option style="color: black;" value="Spesialis Anak | dr. Hans Angelius suharto, Sp. A | 14.00-16.00" {{ old('jadwal') == 'Spesialis Anak | dr. Hans Angelius suharto, Sp. A | 14.00-16.00' ? 'selected' : '' }}>{{ __('Spesialis Anak | dr. Hans Angelius suharto, Sp. A | 14.00-16.00') }}</option>
-                                <option style="color: black;" value="Splesialis Bedah | dr. Billy Jeffkien A. ohe, Sp.B | 12.00-14.00" {{ old('jadwal') == 'Splesialis Bedah | dr. Billy Jeffkien A. ohe, Sp.B | 12.00-14.00' ? 'selected' : '' }}>{{ __('Splesialis Bedah | dr. Billy Jeffkien A. ohe, Sp.B | 12.00-14.00') }}</option>
-                                <option style="color: black;" value="Splesialis Gizi Klinik | dr. Aprinand Tandoek, M.Kes. Sp.GK | 08.00-09.30" {{ old('jadwal') == 'Splesialis Gizi Klinik | dr. Aprinand Tandoek, M.Kes. Sp.GK | 08.00-09.30' ? 'selected' : '' }}>{{ __('Splesialis Gizi Klinik | dr. Aprinand Tandoek, M.Kes. Sp.GK | 08.00-09.30') }}</option>
-                                <option style="color: black;" value="Splesialis Kandungan | dr. Hariyati Wijaya, Sp.OG | 10.00-15.00" {{ old('jadwal') == 'Splesialis Kandungan | dr. Hariyati Wijaya, Sp.OG | 10.00-15.00' ? 'selected' : '' }}>{{ __('Splesialis Kandungan | dr. Hariyati Wijaya, Sp.OG | 10.00-15.00') }}</option>
                             </select>
-                            {{-- <select name="Selasa" class="form-control{{ $errors->has('Selasa') ? ' is-invalid' : '' }}">
-                                <option style="color: black;" value="" selected disabled>{{ __('Pilih Jadwal') }}</option>
-                                <option style="color: black;" value="Spesialis Anak | dr. Hans Angelius suharto, Sp. A | 14.00-16.00" {{ old('jadwal') == 'Spesialis Anak | dr. Hans Angelius suharto, Sp. A | 14.00-16.00' ? 'selected' : '' }}>{{ __('Spesialis Anak | dr. Hans Angelius suharto, Sp. A | 14.00-16.00') }}</option>
-                                <option style="color: black;" value="Splesialis Bedah | dr. Billy Jeffkien A. ohe, Sp.B | 08.00-10.00" {{ old('jadwal') == 'Splesialis Bedah | dr. Billy Jeffkien A. ohe, Sp.B | 08.00-10.00' ? 'selected' : '' }}>{{ __('Splesialis Bedah | dr. Billy Jeffkien A. ohe, Sp.B | 08.00-10.00') }}</option>
-                                <option style="color: black;" value="Splesialis Gizi Klinik | dr. Aprinand Tandoek, M.Kes. Sp.GK | 08.00-09.30" {{ old('jadwal') == 'Splesialis Gizi Klinik | dr. Aprinand Tandoek, M.Kes. Sp.GK | 08.00-09.30' ? 'selected' : '' }}>{{ __('Splesialis Gizi Klinik | dr. Aprinand Tandoek, M.Kes. Sp.GK | 08.00-09.30') }}</option>
-                                <option style="color: black;" value="Splesialis Kandungan | dr. Arthur Todingbua, Sp.OG, M.Kes | 10.00-15.00" {{ old('jadwal') == 'Splesialis Kandungan | dr. Arthur Todingbua, Sp.OG, M.Kes | 10.00-15.00' ? 'selected' : '' }}>{{ __('Splesialis Kandungan | dr. Arthur Todingbua, Sp.OG, M.Kes | 10.00-15.00') }}</option>
-                            </select>
-                            <select name="Rabu" class="form-control{{ $errors->has('Rabu') ? ' is-invalid' : '' }}">
-                                <option style="color: black;" value="" selected disabled>{{ __('Pilih Jadwal') }}</option>
-                                <option style="color: black;" value="Spesialis Anak | dr. Hans Angelius suharto, Sp. A | 14.00-16.00" {{ old('jadwal') == 'Spesialis Anak | dr. Hans Angelius suharto, Sp. A | 14.00-16.00' ? 'selected' : '' }}>{{ __('Spesialis Anak | dr. Hans Angelius suharto, Sp. A | 14.00-16.00') }}</option>
-                                <option style="color: black;" value="Splesialis Bedah | dr. Billy Jeffkien A. ohe, Sp.B | 12.00-14.00" {{ old('jadwal') == 'Splesialis Bedah | dr. Billy Jeffkien A. ohe, Sp.B | 12.00-14.00' ? 'selected' : '' }}>{{ __('Splesialis Bedah | dr. Billy Jeffkien A. ohe, Sp.B | 12.00-14.00') }}</option>
-                                <option style="color: black;" value="Splesialis Gizi Klinik | dr. Aprinand Tandoek, M.Kes. Sp.GK | 08.00-09.30" {{ old('jadwal') == 'Splesialis Gizi Klinik | dr. Aprinand Tandoek, M.Kes. Sp.GK | 08.00-09.30' ? 'selected' : '' }}>{{ __('Splesialis Gizi Klinik | dr. Aprinand Tandoek, M.Kes. Sp.GK | 08.00-09.30') }}</option>
-                                <option style="color: black;" value="Splesialis Kandungan | dr. Hariyati Wijaya, Sp.OG | 10.00-15.00" {{ old('jadwal') == 'Splesialis Kandungan | dr. Hariyati Wijaya, Sp.OG | 10.00-15.00' ? 'selected' : '' }}>{{ __('Splesialis Kandungan | dr. Hariyati Wijaya, Sp.OG | 10.00-15.00') }}</option>
-                            </select>
-                            <select name="Kamis" class="form-control{{ $errors->has('Kamis') ? ' is-invalid' : '' }}">
-                                <option style="color: black;" value="" selected disabled>{{ __('Pilih Jadwal') }}</option>
-                                <option style="color: black;" value="Spesialis Anak | dr. Hans Angelius suharto, Sp. A | 14.00-16.00" {{ old('jadwal') == 'Spesialis Anak | dr. Hans Angelius suharto, Sp. A | 14.00-16.00' ? 'selected' : '' }}>{{ __('Spesialis Anak | dr. Hans Angelius suharto, Sp. A | 14.00-16.00') }}</option>
-                                <option style="color: black;" value="Splesialis Bedah | dr. Billy Jeffkien A. ohe, Sp.B | 08.00-10.00" {{ old('jadwal') == 'Splesialis Bedah | dr. Billy Jeffkien A. ohe, Sp.B | 08.00-10.00' ? 'selected' : '' }}>{{ __('Splesialis Bedah | dr. Billy Jeffkien A. ohe, Sp.B | 08.00-10.00') }}</option>
-                                <option style="color: black;" value="Splesialis Gizi Klinik | dr. Aprinand Tandoek, M.Kes. Sp.GK | 08.00-09.30" {{ old('jadwal') == 'Splesialis Gizi Klinik | dr. Aprinand Tandoek, M.Kes. Sp.GK | 08.00-09.30' ? 'selected' : '' }}>{{ __('Splesialis Gizi Klinik | dr. Aprinand Tandoek, M.Kes. Sp.GK | 08.00-09.30') }}</option>
-                                <option style="color: black;" value="Splesialis Kandungan | dr.  Arthur Todingbua, Sp.OG, M.Kes | 10.00-15.00" {{ old('jadwal') == 'Splesialis Kandungan | dr.  Arthur Todingbua, Sp.OG, M.Kes | 10.00-15.00' ? 'selected' : '' }}>{{ __('Splesialis Kandungan | dr.  Arthur Todingbua, Sp.OG, M.Kes | 10.00-15.00') }}</option>
-                            </select>
-                            <select name="Jumat" class="form-control{{ $errors->has('Jumat') ? ' is-invalid' : '' }}">
-                                <option style="color: black;" value="" selected disabled>{{ __('Pilih Jadwal') }}</option>
-                                <option style="color: black;" value="Spesialis Anak | dr. Hans Angelius suharto, Sp. A | 14.00-16.00" {{ old('jadwal') == 'Spesialis Anak | dr. Hans Angelius suharto, Sp. A | 14.00-16.00' ? 'selected' : '' }}>{{ __('Spesialis Anak | dr. Hans Angelius suharto, Sp. A | 14.00-16.00') }}</option>
-                                <option style="color: black;" value="Splesialis Bedah | dr. Billy Jeffkien A. ohe, Sp.B | 12.00-14.00" {{ old('jadwal') == 'Splesialis Bedah | dr. Billy Jeffkien A. ohe, Sp.B | 12.00-14.00' ? 'selected' : '' }}>{{ __('Splesialis Bedah | dr. Billy Jeffkien A. ohe, Sp.B | 12.00-14.00') }}</option>
-                                <option style="color: black;" value="Splesialis Gizi Klinik | dr. Aprinand Tandoek, M.Kes. Sp.GK | 08.00-09.30" {{ old('jadwal') == 'Splesialis Gizi Klinik | dr. Aprinand Tandoek, M.Kes. Sp.GK | 08.00-09.30' ? 'selected' : '' }}>{{ __('Splesialis Gizi Klinik | dr. Aprinand Tandoek, M.Kes. Sp.GK | 08.00-09.30') }}</option>
-                                <option style="color: black;" value="Splesialis Kandungan | dr. Hariyati Wijaya, Sp.OG | 10.00-15.00" {{ old('jadwal') == 'Splesialis Kandungan | dr. Hariyati Wijaya, Sp.OG | 10.00-15.00' ? 'selected' : '' }}>{{ __('Splesialis Kandungan | dr. Hariyati Wijaya, Sp.OG | 10.00-15.00') }}</option>
-                            </select>
-                            <select name="Sabtu" class="form-control{{ $errors->has('Sabtu') ? ' is-invalid' : '' }}">
-                                <option style="color: black;" value="" selected disabled>{{ __('Pilih Jadwal') }}</option>
-                                <option style="color: black;" value="Splesialis Bedah | dr. Billy Jeffkien A. ohe, Sp.B | 08.00-10.00" {{ old('jadwal') == 'Splesialis Bedah | dr. Billy Jeffkien A. ohe, Sp.B | 08.00-10.00' ? 'selected' : '' }}>{{ __('Splesialis Bedah | dr. Billy Jeffkien A. ohe, Sp.B | 08.00-10.00') }}</option>
-                                <option style="color: black;" value="Splesialis Gizi Klinik | dr. Aprinand Tandoek, M.Kes. Sp.GK | 08.00-09.30" {{ old('jadwal') == 'Splesialis Gizi Klinik | dr. Aprinand Tandoek, M.Kes. Sp.GK | 08.00-09.30' ? 'selected' : '' }}>{{ __('Splesialis Gizi Klinik | dr. Aprinand Tandoek, M.Kes. Sp.GK | 08.00-09.30') }}</option>
-                                <option style="color: black;" value="Splesialis Kandungan | dr. Arthur Todingbua, Sp.OG, M.Kes | 10.00-15.00" {{ old('jadwal') == 'Splesialis Kandungan | dr. Arthur Todingbua, Sp.OG, M.Kes | 10.00-15.00' ? 'selected' : '' }}>{{ __('Splesialis Kandungan | dr. Arthur Todingbua, Sp.OG, M.Kes | 10.00-15.00') }}</option>
-                            </select> --}}
                             @include('alerts.feedback', ['field' => 'jadwal'])
                         </div>
 
@@ -91,6 +53,83 @@
     </div>
 
     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Tangkap elemen input tanggal
+            const tanggalInput = document.querySelector('input[name="tanggaldaftar"]');
 
+            // Tangkap elemen dropdown jadwal
+            const jadwalDropdown = document.querySelector('select[name="jadwal"]');
+
+            // Fungsi untuk mengisi opsi dropdown jadwal berdasarkan hari
+            function updateJadwalOptions(hari) {
+                // Kosongkan opsi dropdown jadwal
+                jadwalDropdown.innerHTML = '';
+
+                // Tambahkan opsi berdasarkan hari yang dipilih
+                switch (hari) {
+                    case 'Senin':
+                        addJadwalOption('Spesialis Anak | dr. Hans Angelius suharto, Sp. A | 14.00-16.00');
+                        addJadwalOption('Splesialis Bedah | dr. Billy Jeffkien A. ohe, Sp.B | 12.00-14.00');
+                        addJadwalOption('Splesialis Gizi Klinik | dr. Aprinand Tandoek, M.Kes. Sp.GK | 08.00-09.30');
+                        addJadwalOption('Splesialis Kandungan | dr. Hariyati Wijaya, Sp.OG | 10.00-15.00');
+                        break;
+                    case 'Selasa':
+                        addJadwalOption('Spesialis Anak | dr. Hans Angelius suharto, Sp. A | 14.00-16.00');
+                        addJadwalOption('Splesialis Bedah | dr. Billy Jeffkien A. ohe, Sp.B | 08.00-10.00');
+                        addJadwalOption('Splesialis Gizi Klinik | dr. Aprinand Tandoek, M.Kes. Sp.GK | 08.00-09.30');
+                        addJadwalOption('Splesialis Kandungan | dr. Arthur Todingbua, Sp.OG, M.Kes | 10.00-15.00');
+                        break;
+                    case 'Rabu':
+                        addJadwalOption('Spesialis Anak | dr. Hans Angelius suharto, Sp. A | 14.00-16.00');
+                        addJadwalOption('Splesialis Bedah | dr. Billy Jeffkien A. ohe, Sp.B | 12.00-14.00');
+                        addJadwalOption('Splesialis Gizi Klinik | dr. Aprinand Tandoek, M.Kes. Sp.GK | 08.00-09.30');
+                        addJadwalOption('Splesialis Kandungan | dr. Hariyati Wijaya, Sp.OG | 10.00-15.00');
+                        break;
+                    case 'Kamis':
+                        addJadwalOption('Spesialis Anak | dr. Hans Angelius suharto, Sp. A | 14.00-16.00');
+                        addJadwalOption('Splesialis Bedah | dr. Billy Jeffkien A. ohe, Sp.B | 08.00-10.00');
+                        addJadwalOption('Splesialis Gizi Klinik | dr. Aprinand Tandoek, M.Kes. Sp.GK | 08.00-09.30');
+                        addJadwalOption('Splesialis Kandungan | dr.  Arthur Todingbua, Sp.OG, M.Kes | 10.00-15.00');
+                        break;
+                    case 'Jumat':
+                        addJadwalOption('Spesialis Anak | dr. Hans Angelius suharto, Sp. A | 14.00-16.00');
+                        addJadwalOption('Splesialis Bedah | dr. Billy Jeffkien A. ohe, Sp.B | 12.00-14.00');
+                        addJadwalOption('Splesialis Gizi Klinik | dr. Aprinand Tandoek, M.Kes. Sp.GK | 08.00-09.30');
+                        addJadwalOption('Splesialis Kandungan | dr. Hariyati Wijaya, Sp.OG | 10.00-15.00');
+                        break;
+                    case 'Sabtu':
+                        addJadwalOption('Splesialis Bedah | dr. Billy Jeffkien A. ohe, Sp.B | 08.00-10.00');
+                        addJadwalOption('Splesialis Gizi Klinik | dr. Aprinand Tandoek, M.Kes. Sp.GK | 08.00-09.30');
+                        addJadwalOption('Splesialis Gizi Klinik | dr. Aprinand Tandoek, M.Kes. Sp.GK | 08.00-09.30');
+                        addJadwalOption('Splesialis Kandungan | dr. Arthur Todingbua, Sp.OG, M.Kes | 10.00-15.00');
+                }
+            }
+
+            // Fungsi untuk menambahkan opsi ke dropdown jadwal
+            function addJadwalOption(text) {
+                const option = document.createElement('option');
+                option.style.color = 'black';
+                option.value = text;
+                option.text = text;
+                jadwalDropdown.add(option);
+            }
+
+            // Tambahkan event listener untuk perubahan pada input tanggal
+            tanggalInput.addEventListener('change', function () {
+                // Ambil nilai hari dari tanggal yang dipilih
+                const selectedDate = new Date(tanggalInput.value);
+                const hari = getDayName(selectedDate.getDay());
+
+                // Perbarui opsi dropdown jadwal berdasarkan hari
+                updateJadwalOptions(hari);
+            });
+
+            // Fungsi untuk mendapatkan nama hari berdasarkan indeks
+            function getDayName(dayIndex) {
+                const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+                return days[dayIndex];
+            }
+        });
     </script>
+
 @endsection

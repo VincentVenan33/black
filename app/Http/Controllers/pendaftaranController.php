@@ -37,7 +37,6 @@ class PendaftaranController extends Controller
         $request->validate([
             "idpasien" => "required",
             "tanggaldaftar" => "required",
-            "jadwal" => "required",
         ]);
         $pendaftaran_data = PendaftaranModel::create([
             "idpasien" => $request->idpasien,
