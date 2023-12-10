@@ -17,9 +17,6 @@
                   Nama Pasien
                 </th>
                 <th>
-                  Poli
-                </th>
-                <th>
                   Tanggal Daftar
                 </th>
                 <th>
@@ -30,11 +27,10 @@
             @php $no = 1; @endphp
 
                     <tbody>
-                        @foreach($pendaftaran_models as $pdfn)
+                        @foreach($pendaftaranpasien as $pdfn)
                             <tr>
-                                <th>{{ ( $pendaftaran_models->currentPage() - 1 ) * $pendaftaran_models->perPage() + $loop->iteration }}</th>
-                                <td>{{$pdfn->namapasien}}</td>
-                                <td>{{$pdfn->poli}}</td>
+                                <th>{{ ( $pendaftaranpasien->currentPage() - 1 ) * $pendaftaranpasien->perPage() + $loop->iteration }}</th>
+                                <td>{{$pdfn->nama}}</td>
                                 <td>{{$pdfn->tanggaldaftar}}</td>
                                 <td>{{$pdfn->jadwal}}</td>
                                 <td>

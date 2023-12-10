@@ -24,7 +24,6 @@ return new class extends Migration
             $table->string('pekerjaan');
             $table->string('status');
             $table->string('notelp');
-            $table->string('poli');
             $table->timestamps();
         });
     }

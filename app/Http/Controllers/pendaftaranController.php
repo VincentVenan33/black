@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\PendaftaranModel;
+use App\Models\PasienModel;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 
@@ -10,30 +12,35 @@ class PendaftaranController extends Controller
     public function viewpendaftaran()
     {
         $data = array();
-        $pendaftaran_data = PendaftaranModel::select('*')->orderBy('id', 'desc')->paginate(10);
+        $pendaftaran_data = DB::table('pendaftaranpasien')
+            ->join('pasien', 'pendaftaranpasien.idpasien', '=', 'pasien.id')
+            ->select('pendaftaranpasien.*', 'pasien.nama')
+            ->orderBy('pendaftaranpasien.id', 'desc')
+            ->paginate(10);
+
         $data['title'] = "Pendaftaran Pasien";
-        $data['pendaftaran_models'] = $pendaftaran_data;
+        $data['pendaftaranpasien'] = $pendaftaran_data;
+
         return view('pendaftaran.viewpendaftaran', $data);
     }
 
     public function addpendaftaran()
     {
+        $listPasien = PasienModel::all();
         $data = array();
         $data['title'] = "Tambah pendaftaran";
-        return view('pendaftaran.addpendaftaran', $data);
+        return view('pendaftaran.addpendaftaran', $data, compact('listPasien'));
     }
 
     public function savependaftaran(Request $request)
     {
         $request->validate([
-            "namapasien" => "required|min:3",
-            "poli" => "required",
+            "idpasien" => "required",
             "tanggaldaftar" => "required",
             "jadwal" => "required",
         ]);
         $pendaftaran_data = PendaftaranModel::create([
-            "namapasien" => $request->namapasien,
-            "poli" => $request->poli,
+            "idpasien" => $request->idpasien,
             "tanggaldaftar" => $request->tanggaldaftar,
             "jadwal" => $request->jadwal,
         ]);
