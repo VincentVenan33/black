@@ -50,7 +50,7 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::post('pendaftaran/save', ['as' => 'pages.savependaftaran', 'uses' => 'App\Http\Controllers\PendaftaranController@savependaftaran']);
 		// Route::get('pasien/change/{id}', ['as' => 'pages.changepasien', 'uses' => 'App\Http\Controllers\PasienController@changepasien']);
 		// Route::post('pasien/update', ['as' => 'pages.updatepasien', 'uses' => 'App\Http\Controllers\PasienController@updatepasien']);
-		// Route::get('pasien/delete/{id}', ['as' => 'pages.deletepasien', 'uses' => 'App\Http\Controllers\PasienController@deletepasien']);
+		Route::get('pendaftaran/delete/{id}', ['as' => 'pages.deletependaftaran', 'uses' => 'App\Http\Controllers\PendaftaranController@deletependaftaran']);
 		// Route::get('pasien/detail/{id}', ['as' => 'pages.detailpasien', 'uses' => 'App\Http\Controllers\PasienController@detailpasien']);
 });
 

@@ -100,7 +100,6 @@
                     case 'Sabtu':
                         addJadwalOption('Splesialis Bedah | dr. Billy Jeffkien A. ohe, Sp.B | 08.00-10.00');
                         addJadwalOption('Splesialis Gizi Klinik | dr. Aprinand Tandoek, M.Kes. Sp.GK | 08.00-09.30');
-                        addJadwalOption('Splesialis Gizi Klinik | dr. Aprinand Tandoek, M.Kes. Sp.GK | 08.00-09.30');
                         addJadwalOption('Splesialis Kandungan | dr. Arthur Todingbua, Sp.OG, M.Kes | 10.00-15.00');
                 }
             }

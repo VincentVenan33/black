@@ -37,9 +37,7 @@
                                 <td>{{$pdfn->tanggaldaftar}}</td>
                                 <td>{{$pdfn->jadwal}}</td>
                                 <td>
-                                    <!-- <a href="{{ route('pages.detailpasien', $pdfn->id)}}" class="btn btn-info btn-sm"><i class="tim-icons icon-zoom-split"></i></a>
-                                    <a href="{{ route('pages.changepasien', $pdfn->id)}}" class="btn btn-warning btn-sm"><i class="tim-icons icon-pencil"></i></a>
-                                    <a href="{{ route('pages.deletepasien', $pdfn->id)}}" onclick="return confirm('Apakah Anda Yakin Menghapus Data?');" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a> -->
+                                    <a href="{{ route('pages.deletependaftaran', $pdfn->id)}}" onclick="return confirm('Apakah Anda Yakin Membatalkan Pendaftaran?');" class="btn btn-danger btn-sm"><i class="tim-icons icon-simple-remove"></i></a>
                                 </td>
                             </tr>
                         @endforeach

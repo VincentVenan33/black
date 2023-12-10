@@ -103,12 +103,12 @@ class PendaftaranController extends Controller
     //     return redirect()->route('pages.viewpasien')->with('message','Data update succeesfully');
     // }
 
-    // public function deletepasien($id)
-    // {
-    //     $pasien_data = PendaftaranModel::where('id', $id)->first();
-    //     $pasien_data->delete();
-    //     return redirect()->route('pages.viewpasien')->with('error','Data Deleted');
-    // }
+    public function deletependaftaran($id)
+    {
+        $pendaftaran_data = PendaftaranModel::where('id', $id)->first();
+        $pendaftaran_data->delete();
+        return redirect()->route('pages.viewpendaftaran')->with('error','Data Canceled');
+    }
 
     // public function detailpasien($id)
     // {
