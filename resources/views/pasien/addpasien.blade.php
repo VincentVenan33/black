@@ -99,19 +99,6 @@
                             @include('alerts.feedback', ['field' => 'notelp'])
                         </div>
 
-                        <div class="form-group{{ $errors->has('poli') ? ' has-danger' : '' }}">
-                            <label>{{ __('Poli') }}</label>
-                            <select name="poli" class="form-control{{ $errors->has('poli') ? ' is-invalid' : '' }}">
-                                <option style="color: black;" value="" selected disabled>{{ __('Pilih Poli') }}</option>
-                                <option style="color: black;" value="Penyakit Dalam" {{ old('poli') == 'Penyakit Dalam' ? 'selected' : '' }}>{{ __('Penyakit Dalam') }}</option>
-                                <option style="color: black;" value="Bedah" {{ old('poli') == 'Bedah' ? 'selected' : '' }}>{{ __('Bedah') }}</option>
-                                <option style="color: black;" value="Anak" {{ old('poli') == 'Anak' ? 'selected' : '' }}>{{ __('Anak') }}</option>
-                                <option style="color: black;" value="Obgin" {{ old('poli') == 'Obgin' ? 'selected' : '' }}>{{ __('Obgin') }}</option>
-                                <option style="color: black;" value="Paru-Paru" {{ old('poli') == 'Paru-Paru' ? 'selected' : '' }}>{{ __('Paru-Paru') }}</option>
-                            </select>
-                            @include('alerts.feedback', ['field' => 'poli'])
-                        </div>
-
                     </div>
                     <div class="container">
                         <div class="row">

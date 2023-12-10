@@ -10,5 +10,5 @@ class PasienModel extends Model
     use HasFactory;
     protected $table = 'pasien';
     protected $primaryKey = 'id';
-    protected $fillable = ['nomorrekammedis', 'nama', 'tempat', 'tanggallahir', 'jeniskelamin', 'alamatlengkap', 'pendidikan', 'agama', 'pekerjaan', 'status', 'notelp', 'poli'];
+    protected $fillable = ['nomorrekammedis', 'nama', 'tempat', 'tanggallahir', 'jeniskelamin', 'alamatlengkap', 'pendidikan', 'agama', 'pekerjaan', 'status', 'notelp'];
 }

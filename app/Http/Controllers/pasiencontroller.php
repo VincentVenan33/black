@@ -37,7 +37,6 @@ class PasienController extends Controller
             "pekerjaan" => "required|min:3",
             "status" => "required",
             "notelp" => "required",
-            "poli" => "required",
         ]);
         $pasien_data = PasienModel::create([
             "nomorrekammedis" => $request->nomorrekammedis,
@@ -51,7 +50,6 @@ class PasienController extends Controller
             "pekerjaan" => $request->pekerjaan,
             "status" => $request->status,
             "notelp" => $request->notelp,
-            "poli" => $request->poli,
         ]);
         if($pasien_data){
             return redirect()->route('pages.viewpasien')->with('message','Data added Successfully');
@@ -87,7 +85,6 @@ class PasienController extends Controller
             "pekerjaan" => "required|min:3",
             "status" => "required",
             "notelp" => "required",
-            "poli" => "required",
 
         ]);
         $pasien_data = PasienModel::find($request->id);
@@ -107,7 +104,6 @@ class PasienController extends Controller
                         "pekerjaan" => $request->pekerjaan,
                         "status" => $request->status,
                         "notelp" => $request->notelp,
-                        "poli" => $request->poli,
                     ]);
 
         return redirect()->route('pages.viewpasien')->with('message','Data update succeesfully');

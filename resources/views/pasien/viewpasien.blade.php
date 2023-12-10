@@ -44,7 +44,6 @@
                                 <th>{{ ( $pasien->currentPage() - 1 ) * $pasien->perPage() + $loop->iteration }}</th>
                                 <td>{{$psn->nomorrekammedis}}</td>
                                 <td>{{$psn->nama}}</td>
-                                <td>{{$psn->poli}}</td>
                                 <td>{{$psn->created_at}}</td>
                                 <td>{{$psn->updated_at}}</td>
                                 <td>

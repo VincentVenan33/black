@@ -87,12 +87,6 @@
                             @include('alerts.feedback', ['field' => 'notelp'])
                         </div>
 
-                        <div class="form-group{{ $errors->has('poli') ? ' has-danger' : '' }}">
-                            <label>{{ __('Poli') }}</label>
-                            <input style="color: white;" type="text" name="poli" class="form-control{{ $errors->has('poli') ? ' is-invalid' : '' }}" placeholder="{{ __('Poli') }}" value="{{ old('poli', $pasien->poli) }}" disabled>
-                            @include('alerts.feedback', ['field' => 'poli'])
-                        </div>
-
                     </div>
                     <div class="container">
                         <div class="row">
