@@ -10,19 +10,47 @@ use Illuminate\Http\Request;
 class PendaftaranController extends Controller
 {
     public function viewpendaftaran()
-    {
-        $data = array();
-        $pendaftaran_data = DB::table('pendaftaranpasien')
-            ->join('pasien', 'pendaftaranpasien.idpasien', '=', 'pasien.id')
-            ->select('pendaftaranpasien.*', 'pasien.nama')
-            ->orderBy('pendaftaranpasien.id', 'desc')
-            ->paginate(10);
+{
+    $data = array();
 
-        $data['title'] = "Pendaftaran Pasien";
-        $data['pendaftaranpasien'] = $pendaftaran_data;
+    // Fetch pendaftaranpasien data with join
+    $pendaftaran_data = DB::table('pendaftaranpasien')
+        ->join('pasien', 'pendaftaranpasien.idpasien', '=', 'pasien.id')
+        ->select('pendaftaranpasien.*', 'pasien.nama')
+        ->orderBy('pendaftaranpasien.created_at', 'asc') // Sort by creation date in descending order (new to old)
+        ->get();
 
-        return view('pendaftaran.viewpendaftaran', $data);
+    // Initialize an empty array to store the queue numbers for each doctor
+    $doctorQueueNumbers = [];
+
+    // Iterate through pendaftaran_data to calculate and assign queue numbers
+    foreach ($pendaftaran_data as $pdfn) {
+        $doctorName = $pdfn->jadwal;
+
+        // Check if the doctor has an existing queue number, if not, initialize it to 1
+        $queueNumber = isset($doctorQueueNumbers[$doctorName]) ? $doctorQueueNumbers[$doctorName] + 1 : 1;
+
+        // Update the queue number for the doctor
+        $doctorQueueNumbers[$doctorName] = $queueNumber;
+
+        // Assign the queue number to the current pendaftaran_data
+        $pdfn->nomor_antrian = $queueNumber;
     }
+
+    // Convert the collection to an array and reverse the order to display from old to new
+    $reversedPendaftaranData = array_reverse($pendaftaran_data->toArray());
+
+    // Manually paginate the modified pendaftaran_data
+    $perPage = 10;
+    $currentPage = request()->get('page', 1);
+    $pagedData = array_slice($reversedPendaftaranData, ($currentPage - 1) * $perPage, $perPage);
+    $paginatedPendaftaranData = new \Illuminate\Pagination\LengthAwarePaginator($pagedData, count($reversedPendaftaranData), $perPage, $currentPage);
+
+    $data['title'] = "Pendaftaran Pasien";
+    $data['pendaftaranpasien'] = $paginatedPendaftaranData;
+
+    return view('pendaftaran.viewpendaftaran', $data);
+}
 
     public function addpendaftaran()
     {
