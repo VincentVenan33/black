@@ -35,6 +35,14 @@
                             </select>
                             @include('alerts.feedback', ['field' => 'jadwal'])
                         </div>
+                        <div class="form-group{{ $errors->has('jadwal') ? ' has-danger' : '' }}">
+                            <label>{{ __('Status') }}</label>
+                            <label class="form-control switch">
+                                <input name="status" type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                            @include('alerts.feedback', ['field' => 'jadwal'])
+                        </div>
 
                     </div>
                     <div class="container">

@@ -27,6 +27,11 @@ class PendaftaranController extends Controller
 
     // Iterate through pendaftaran_data to calculate and assign queue numbers
     foreach ($pendaftaran_data as $pdfn) {
+        // Check if the patient's status is 0, if yes, skip queue number calculation
+        if ($pdfn->status == 0) {
+            continue;
+        }
+
         $doctorName = $pdfn->jadwal;
         $registrationDate = $pdfn->tanggaldaftar;
 
@@ -62,7 +67,6 @@ class PendaftaranController extends Controller
 }
 
 
-
     public function addpendaftaran()
     {
         $listPasien = PasienModel::all();
@@ -81,6 +85,7 @@ class PendaftaranController extends Controller
             "idpasien" => $request->idpasien,
             "tanggaldaftar" => $request->tanggaldaftar,
             "jadwal" => $request->jadwal,
+            'status' => ($request->status != "" ? "1" : "0"),
         ]);
         if($pendaftaran_data){
             return redirect()->route('pages.viewpendaftaran')->with('message','Data added Successfully');

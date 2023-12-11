@@ -28,6 +28,9 @@
                 <th>
                    Nomor Antrian
                 </th>
+                <th>
+                   Status
+                </th>
               </tr>
             </thead>
             @php $no = 1; @endphp
@@ -40,6 +43,7 @@
                                 <td>{{$pdfn->tanggaldaftar}}</td>
                                 <td>{{$pdfn->jadwal}}</td>
                                 <td>{{ $pdfn->nomor_antrian ?? '' }}</td>
+                                <td>{{($pdfn->status ==1 ? "AKTIF" : "NON AKTIF")}}</td>
                                 <td>
                                     <a href="{{ route('pages.deletependaftaran', $pdfn->id)}}" onclick="return confirm('Apakah Anda Yakin Membatalkan Pendaftaran?');" class="btn btn-danger btn-sm"><i class="tim-icons icon-simple-remove"></i></a>
                                 </td>

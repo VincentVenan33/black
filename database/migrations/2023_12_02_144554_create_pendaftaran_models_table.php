@@ -16,6 +16,7 @@ return new class extends Migration
             $table->integer('idpasien');
             $table->date('tanggaldaftar');
             $table->string('jadwal');
+            $table->char('status');
             $table->timestamps();
         });
     }

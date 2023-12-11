@@ -10,5 +10,5 @@ class PendaftaranModel extends Model
     use HasFactory;
     protected $table = 'pendaftaranpasien';
     protected $primaryKey = 'id';
-    protected $fillable = ['idpasien', 'tanggaldaftar', 'jadwal'];
+    protected $fillable = ['idpasien', 'tanggaldaftar', 'jadwal', 'status'];
 }
