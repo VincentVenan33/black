@@ -17,15 +17,24 @@ class PendaftaranController extends Controller
     $pendaftaran_data = DB::table('pendaftaranpasien')
         ->join('pasien', 'pendaftaranpasien.idpasien', '=', 'pasien.id')
         ->select('pendaftaranpasien.*', 'pasien.nama')
-        ->orderBy('pendaftaranpasien.created_at', 'asc') // Sort by creation date in descending order (new to old)
+        ->orderBy('pendaftaranpasien.tanggaldaftar', 'asc') // Sort by registration date in ascending order
+        ->orderBy('pendaftaranpasien.created_at', 'asc') // Then, sort by creation date in ascending order
         ->get();
 
     // Initialize an empty array to store the queue numbers for each doctor
     $doctorQueueNumbers = [];
+    $currentDate = null; // To keep track of the current registration date
 
     // Iterate through pendaftaran_data to calculate and assign queue numbers
     foreach ($pendaftaran_data as $pdfn) {
         $doctorName = $pdfn->jadwal;
+        $registrationDate = $pdfn->tanggaldaftar;
+
+        // Check if the registration date is different, reset queue number
+        if ($registrationDate != $currentDate) {
+            $currentDate = $registrationDate;
+            $doctorQueueNumbers = []; // Reset queue numbers for a new date
+        }
 
         // Check if the doctor has an existing queue number, if not, initialize it to 1
         $queueNumber = isset($doctorQueueNumbers[$doctorName]) ? $doctorQueueNumbers[$doctorName] + 1 : 1;
@@ -51,6 +60,8 @@ class PendaftaranController extends Controller
 
     return view('pendaftaran.viewpendaftaran', $data);
 }
+
+
 
     public function addpendaftaran()
     {
