@@ -21,6 +21,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        $title = "Home";
+        return view('dashboard',
+    [
+        'title' => $title,
+    ]);
     }
 }

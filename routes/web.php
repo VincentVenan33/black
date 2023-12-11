@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +15,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $title = "Welcome";
+    return view('welcome',
+[
+    'title' => $title
+]);
 });
 
 Auth::routes();
@@ -35,6 +40,14 @@ Route::group(['middleware' => 'auth'], function () {
         //about us
 		Route::get('aboutus', ['as' => 'pages.aboutus', 'uses' => 'App\Http\Controllers\PageController@aboutus']);
 
+        //user
+        Route::get('users/index', ['as' => 'pages.index', 'uses' => 'App\Http\Controllers\UserController@index']);
+        Route::get('users/add', ['as' => 'pages.adduser', 'uses' => 'App\Http\Controllers\UserController@adduser']);
+		Route::post('users/save', ['as' => 'pages.saveuser', 'uses' => 'App\Http\Controllers\UserController@saveuser']);
+        Route::get('users/change/{id}', ['as' => 'pages.changeuser', 'uses' => 'App\Http\Controllers\UserController@changeuser']);
+		Route::post('users/update', ['as' => 'pages.updateuser', 'uses' => 'App\Http\Controllers\UserController@updateuser']);
+		Route::get('users/delete/{id}', ['as' => 'pages.deleteuser', 'uses' => 'App\Http\Controllers\UserController@deleteuser']);
+
         //pasien
 		Route::get('pasien/view', ['as' => 'pages.viewpasien', 'uses' => 'App\Http\Controllers\PasienController@viewpasien']);
 		Route::get('pasien/add', ['as' => 'pages.addpasien', 'uses' => 'App\Http\Controllers\PasienController@addpasien']);
@@ -51,7 +64,6 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::get('pendaftaran/change/{id}', ['as' => 'pages.changependaftaran', 'uses' => 'App\Http\Controllers\PendaftaranController@changependaftaran']);
 		Route::post('pendaftaran/update', ['as' => 'pages.updatependaftaran', 'uses' => 'App\Http\Controllers\PendaftaranController@updatependaftaran']);
 		Route::get('pendaftaran/delete/{id}', ['as' => 'pages.deletependaftaran', 'uses' => 'App\Http\Controllers\PendaftaranController@deletependaftaran']);
-		// Route::get('pasien/detail/{id}', ['as' => 'pages.detailpasien', 'uses' => 'App\Http\Controllers\PendaftaranController@detailpasien']);
 });
 
 Route::group(['middleware' => 'auth'], function () {

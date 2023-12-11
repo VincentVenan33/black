@@ -11,7 +11,11 @@ class PageController extends Controller
      */
     public function icons()
     {
-        return view('pages.icons');
+        $title = "Icons";
+        return view('pages.icons',
+        [
+            'title' => $title,
+        ]);
     }
 
     /**
@@ -71,7 +75,11 @@ class PageController extends Controller
      */
     public function aboutus()
     {
-        return view('pages.aboutus');
+        $title = "Icons";
+        return view('pages.aboutus',
+        [
+            'title' => $title,
+        ]);
     }
 
     /**

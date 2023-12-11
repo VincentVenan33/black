@@ -7,7 +7,7 @@
 
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Black Dashboard') }}</title>
+        <title>RS BPM | {{ $title }}</title>
         <!-- Favicon -->
         <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('black') }}/img/392954327_650574423596082_8133245612540985038_n.jpg">
         <link rel="icon" type="image/png" href="{{ asset('black') }}/img/392954327_650574423596082_8133245612540985038_n.jpg">
@@ -61,7 +61,7 @@
                 </div>
             </div>
         @endauth
-        <div class="fixed-plugin">
+        {{-- <div class="fixed-plugin">
             <div class="dropdown show-dropdown">
                 <a href="#" data-toggle="dropdown">
                 <i class="fa fa-cog fa-2x"> </i>
@@ -97,7 +97,7 @@
                 </li>
                 </ul>
             </div>
-        </div>
+        </div> --}}
         <script src="{{ asset('black') }}/js/core/jquery.min.js"></script>
         <script src="{{ asset('black') }}/js/core/popper.min.js"></script>
         <script src="{{ asset('black') }}/js/core/bootstrap.min.js"></script>

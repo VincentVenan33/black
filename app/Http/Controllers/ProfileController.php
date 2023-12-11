@@ -15,7 +15,11 @@ class ProfileController extends Controller
      */
     public function edit()
     {
-        return view('profile.edit');
+        $title = "Profile Edit";
+        return view('profile.edit',
+        [
+            'title' => $title,
+        ]);
     }
 
     /**

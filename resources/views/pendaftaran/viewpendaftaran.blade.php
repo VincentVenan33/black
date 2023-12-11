@@ -5,7 +5,7 @@
   <div class="col-md-12">
     <div class="card ">
       <div class="card-header">
-        <h4 class="card-title"> Pendaftaran Pasien</h4>
+        <h4 class="card-title">Pendaftaran Pasien</h4>
       </div>
       <div class="card-body">
         <a class="btn btn-success" href="{{ route('pages.addpendaftaran') }}"><i class="tim-icons icon-simple-add"></i> Daftar</a><br><br>

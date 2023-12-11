@@ -14,7 +14,7 @@
 
                         <div class="form-group{{ $errors->has('id') ? ' has-danger' : '' }}">
                             {{-- <label>{{ __('id') }}</label> --}}
-                            <input type="hidden" name="id" class="form-control{{ $errors->has('id') ? ' is-invalid' : '' }}" placeholder="{{ __('Nomor Rekam Medis') }}" value="{{ old('id', $pasien->id) }}">
+                            <input type="hidden" name="id" class="form-control{{ $errors->has('id') ? ' is-invalid' : '' }}" placeholder="{{ __('id') }}" value="{{ old('id', $pasien->id) }}">
                             @include('alerts.feedback', ['field' => 'id'])
                         </div>
 
@@ -114,7 +114,7 @@
                                    title="Hanya dapat diisi dengan karakter + dan angka">
                             @include('alerts.feedback', ['field' => 'notelp'])
                         </div>
-                        
+
                     </div>
                     <div class="container">
                         <div class="row">

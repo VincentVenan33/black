@@ -1,7 +1,7 @@
 @extends('layouts.app', ['pageSlug' => 'dashboard'])
 
 @section('content')
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-12">
             <div class="card card-chart">
                 <div class="card-header ">
@@ -367,6 +367,11 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div> --}}
+    <div class="d-flex align-items-center justify-content-center" style="padding: 24%">
+        <div class="text-center">
+            <h2 style="color: black; font-weight: bold;">Welcome, {{ Auth::user()->name }}!</h2>
         </div>
     </div>
 @endsection
