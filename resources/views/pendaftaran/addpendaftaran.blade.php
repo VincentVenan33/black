@@ -30,18 +30,18 @@
                         </div>
                         <div class="form-group{{ $errors->has('jadwal') ? ' has-danger' : '' }}">
                             <label>{{ __('Jadwal Dokter') }}</label>
-                            <select id="Senin" name="jadwal" class="form-control{{ $errors->has('jadwal') ? ' is-invalid' : '' }}">
+                            <select name="jadwal" class="form-control{{ $errors->has('jadwal') ? ' is-invalid' : '' }}">
                                 <option style="color: black;" value="" selected disabled>{{ __('Pilih Jadwal') }}</option>
                             </select>
                             @include('alerts.feedback', ['field' => 'jadwal'])
                         </div>
-                        <div class="form-group{{ $errors->has('jadwal') ? ' has-danger' : '' }}">
+                        <div class="form-group{{ $errors->has('status') ? ' has-danger' : '' }}">
                             <label>{{ __('Status') }}</label>
                             <label class="form-control switch">
                                 <input name="status" type="checkbox" checked>
                                 <span class="slider round"></span>
                             </label>
-                            @include('alerts.feedback', ['field' => 'jadwal'])
+                            @include('alerts.feedback', ['field' => 'status'])
                         </div>
 
                     </div>

@@ -48,10 +48,10 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::get('pendaftaran/view', ['as' => 'pages.viewpendaftaran', 'uses' => 'App\Http\Controllers\PendaftaranController@viewpendaftaran']);
 		Route::get('pendaftaran/add', ['as' => 'pages.addpendaftaran', 'uses' => 'App\Http\Controllers\PendaftaranController@addpendaftaran']);
 		Route::post('pendaftaran/save', ['as' => 'pages.savependaftaran', 'uses' => 'App\Http\Controllers\PendaftaranController@savependaftaran']);
-		// Route::get('pasien/change/{id}', ['as' => 'pages.changepasien', 'uses' => 'App\Http\Controllers\PasienController@changepasien']);
-		// Route::post('pasien/update', ['as' => 'pages.updatepasien', 'uses' => 'App\Http\Controllers\PasienController@updatepasien']);
+		Route::get('pendaftaran/change/{id}', ['as' => 'pages.changependaftaran', 'uses' => 'App\Http\Controllers\PendaftaranController@changependaftaran']);
+		Route::post('pendaftaran/update', ['as' => 'pages.updatependaftaran', 'uses' => 'App\Http\Controllers\PendaftaranController@updatependaftaran']);
 		Route::get('pendaftaran/delete/{id}', ['as' => 'pages.deletependaftaran', 'uses' => 'App\Http\Controllers\PendaftaranController@deletependaftaran']);
-		// Route::get('pasien/detail/{id}', ['as' => 'pages.detailpasien', 'uses' => 'App\Http\Controllers\PasienController@detailpasien']);
+		// Route::get('pasien/detail/{id}', ['as' => 'pages.detailpasien', 'uses' => 'App\Http\Controllers\PendaftaranController@detailpasien']);
 });
 
 Route::group(['middleware' => 'auth'], function () {
