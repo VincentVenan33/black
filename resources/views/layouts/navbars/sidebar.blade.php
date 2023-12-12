@@ -1,3 +1,7 @@
+@php
+    $pageSlug = isset($pageSlug) ? $pageSlug : '';
+@endphp
+
 <div class="sidebar">
     <div class="sidebar-wrapper">
         <div class="logo">
