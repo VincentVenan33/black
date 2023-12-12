@@ -57,13 +57,20 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::get('pasien/delete/{id}', ['as' => 'pages.deletepasien', 'uses' => 'App\Http\Controllers\PasienController@deletepasien']);
 		Route::get('pasien/detail/{id}', ['as' => 'pages.detailpasien', 'uses' => 'App\Http\Controllers\PasienController@detailpasien']);
 
-         //pendaftaran pasien
+         //pendaftaran pasien (admin)
 		Route::get('pendaftaran/view', ['as' => 'pages.viewpendaftaran', 'uses' => 'App\Http\Controllers\PendaftaranController@viewpendaftaran']);
 		Route::get('pendaftaran/add', ['as' => 'pages.addpendaftaran', 'uses' => 'App\Http\Controllers\PendaftaranController@addpendaftaran']);
 		Route::post('pendaftaran/save', ['as' => 'pages.savependaftaran', 'uses' => 'App\Http\Controllers\PendaftaranController@savependaftaran']);
+		Route::get('pendaftaran/finish/{id}', ['as' => 'pages.finishpendaftaran', 'uses' => 'App\Http\Controllers\PendaftaranController@finishpendaftaran']);
 		Route::get('pendaftaran/change/{id}', ['as' => 'pages.changependaftaran', 'uses' => 'App\Http\Controllers\PendaftaranController@changependaftaran']);
 		Route::post('pendaftaran/update', ['as' => 'pages.updatependaftaran', 'uses' => 'App\Http\Controllers\PendaftaranController@updatependaftaran']);
 		Route::get('pendaftaran/delete/{id}', ['as' => 'pages.deletependaftaran', 'uses' => 'App\Http\Controllers\PendaftaranController@deletependaftaran']);
+
+        //pendaftaran pasien (pasien)
+        Route::get('pendaftaran/pasien/view', ['as' => 'pages.viewpendaftaranpasien', 'uses' => 'App\Http\Controllers\PendaftaranController@viewpendaftaranpasien']);
+        Route::get('pendaftaran/pasien/add', ['as' => 'pages.addpendaftaranpasien', 'uses' => 'App\Http\Controllers\PendaftaranController@addpendaftaranpasien']);
+		Route::post('pendaftaran/pasien/save', ['as' => 'pages.savependaftaranpasien', 'uses' => 'App\Http\Controllers\PendaftaranController@savependaftaranpasien']);
+        Route::get('pendaftaran/pasien/delete/{id}', ['as' => 'pages.deletependaftaranpasien', 'uses' => 'App\Http\Controllers\PendaftaranController@deletependaftaranpasien']);
 });
 
 Route::group(['middleware' => 'auth'], function () {

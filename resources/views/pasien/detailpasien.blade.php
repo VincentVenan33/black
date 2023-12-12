@@ -26,7 +26,14 @@
 
                         <div class="form-group{{ $errors->has('nama') ? ' has-danger' : '' }}">
                             <label>{{ __('Nama') }}</label>
-                            <input style="color: white;" type="text" name="nama" class="form-control{{ $errors->has('nama') ? ' is-invalid' : '' }}" placeholder="{{ __('Nama') }}" placeholder="{{ __('Nomor Rekam Medis') }}" value="{{ old('nama', $pasien->nama) }}" disabled>
+                            <select style="color: white; -moz-appearance: none; -webkit-appearance: none; appearance: none; overflow: hidden; text-overflow: ''; text-indent: 0;" name="iduser" class="form-control{{ $errors->has('iduser') ? ' is-invalid' : '' }}" disabled>
+                                <option value="" selected disabled>{{ __('Pilih Nama') }}</option>
+                                @foreach($listNama as $nama)
+                                    <option style="color: black;" value="{{ $nama->id }}" {{ $pasien->iduser == $nama->id ? 'selected' : '' }}>
+                                        {{ $nama->name }}
+                                    </option>
+                                @endforeach
+                            </select>
                             @include('alerts.feedback', ['field' => 'nama'])
                         </div>
 

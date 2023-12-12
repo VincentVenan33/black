@@ -18,17 +18,17 @@
                             @include('alerts.feedback', ['field' => 'id'])
                         </div>
 
-                        <div class="form-group{{ $errors->has('nama') ? ' has-danger' : '' }}">
-                            <label>{{ __('Nama') }}</label>
-                            <select style="color: white;" name="iduser" class="form-control{{ $errors->has('iduser') ? ' is-invalid' : '' }}">
-                                <option value="" selected disabled>{{ __('Pilih Nama') }}</option>
-                                @foreach($listNama as $nama)
-                                    <option style="color: black;" value="{{ $nama->id }}" {{ $pendaftaranpasien->iduser == $nama->id ? 'selected' : '' }}>
-                                        {{ $nama->name }}
+                        <div class="form-group{{ $errors->has('idpasien') ? ' has-danger' : '' }}">
+                            <label>{{ __('Nama Pasien') }}</label>
+                            <select style="color: white; -moz-appearance: none; -webkit-appearance: none; appearance: none; overflow: hidden; text-overflow: ''; text-indent: 0;" name="idpasien" class="form-control{{ $errors->has('idpasien') ? ' is-invalid' : '' }}" disabled>
+                                <option value="" selected disabled>{{ __('Pilih Pasien') }}</option>
+                                @foreach($listPasien as $pasien)
+                                    <option style="color: black;" value="{{ $pasien->id }}" {{ $pendaftaranpasien->idpasien == $pasien->id ? 'selected' : '' }}>
+                                        {{ $pasien->nama }}
                                     </option>
                                 @endforeach
                             </select>
-                            @include('alerts.feedback', ['field' => 'nama'])
+                            @include('alerts.feedback', ['field' => 'idpasien'])
                         </div>
                         <div class="form-group{{ $errors->has('tanggaldaftar') ? ' has-danger' : '' }}">
                             <label>{{ __('Tanggal daftar') }}</label>
@@ -40,15 +40,6 @@
                             <label>{{ __('Jadwal Dokter') }}</label>
                             <input style="color: white" type="text" id="jadwal" name="jadwal" class="form-control{{ $errors->has('jadwal') ? ' is-invalid' : '' }}" value="{{ old('jadwal', $pendaftaranpasien->jadwal) }}" readonly>
                             @include('alerts.feedback', ['field' => 'jadwal'])
-                        </div>
-
-                        <div class="form-group{{ $errors->has('status') ? ' has-danger' : '' }}">
-                            <label>{{ __('Status') }}</label>
-                            <label class="form-control switch">
-                                <input name="status" value="{{ old('status', $pendaftaranpasien->status) }}" type="checkbox" {{ $pendaftaranpasien->status == 1 ? 'checked' : '' }}>
-                                <span class="slider round"></span>
-                            </label>
-                            @include('alerts.feedback', ['field' => 'status'])
                         </div>
 
                     </div>

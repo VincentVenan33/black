@@ -4,45 +4,25 @@ namespace App\Http\Controllers;
 
 use App\Models\PendaftaranModel;
 use App\Models\PasienModel;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PendaftaranController extends Controller
 {
+    //Pendaftaran Admin
     public function viewpendaftaran()
     {
         $data = array();
 
         $pendaftaran_data = DB::table('pendaftaranpasien')
-            ->join('pasien', 'pendaftaranpasien.idpasien', '=', 'pasien.id')
-            ->select('pendaftaranpasien.*', 'pasien.nama')
+            ->join('users', 'pendaftaranpasien.iduser', '=', 'users.id')
+            ->select('pendaftaranpasien.*', 'users.name')
             ->orderBy('pendaftaranpasien.created_at', 'asc')
             ->orderBy('pendaftaranpasien.tanggaldaftar', 'asc')
             ->get();
-
-        $doctorQueueNumbers = [];
-        $currentDate = null;
-
-        foreach ($pendaftaran_data as $pdfn) {
-            if ($pdfn->status == 0) {
-                continue;
-            }
-
-            $doctorName = $pdfn->jadwal;
-            $registrationDate = $pdfn->tanggaldaftar;
-
-            if ($registrationDate != $currentDate) {
-                $currentDate = $registrationDate;
-                $doctorQueueNumbers = [];
-            }
-
-            $queueNumber = isset($doctorQueueNumbers[$doctorName]) ? $doctorQueueNumbers[$doctorName] + 1 : 1;
-
-            $doctorQueueNumbers[$doctorName] = $queueNumber;
-
-            $pdfn->nomor_antrian = $queueNumber;
-        }
 
         $reversedPendaftaranData = array_reverse($pendaftaran_data->toArray());
 
@@ -57,24 +37,23 @@ class PendaftaranController extends Controller
         return view('pendaftaran.viewpendaftaran', $data);
     }
 
-
     public function addpendaftaran()
     {
-        $listPasien = PasienModel::all();
+        $listNama = User::all();
         $data = array();
         $data['title'] = "Tambah pendaftaran";
-        return view('pendaftaran.addpendaftaran', $data, compact('listPasien'));
+        return view('pendaftaran.addpendaftaran', $data, compact('listNama'));
     }
 
     public function savependaftaran(Request $request)
     {
         $request->validate([
-            "idpasien" => "required",
+            "iduser" => "required",
             "tanggaldaftar" => "required",
             "jadwal" => "required",
         ]);
         $pendaftaran_data = PendaftaranModel::create([
-            "idpasien" => $request->idpasien,
+            "iduser" => $request->iduser,
             "tanggaldaftar" => $request->tanggaldaftar,
             "jadwal" => $request->jadwal,
             'status' => ($request->status != "" ? "1" : "0"),
@@ -86,59 +65,113 @@ class PendaftaranController extends Controller
         }
     }
 
-    public function changependaftaran($id)
+    public function finishpendaftaran(Request $request, $idPendaftaran)
     {
-        $listPasien = PasienModel::all();
-        // $data = array();
-        $pendaftaran_data = PendaftaranModel::select('*')
-            ->where('id', $id)
-            ->first();
-            $data = [
-                'title' => "Ubah Pendaftaran",
-                'pendaftaranpasien' => $pendaftaran_data,
-                'listPasien' => $listPasien,
-            ];
-        return view('pendaftaran.changependaftaran', $data);
-    }
+        $nomorAntrianHapus = PendaftaranModel::where('id', $idPendaftaran)->value('nomor_antrian');
 
-    public function updatependaftaran(Request $request)
-    {
-        $request->validate([
-            // "idpasien" => "required",
-            "tanggaldaftar" => "required",
-            "jadwal" => "required",
-
-        ]);
-        $pendaftaran_data = PendaftaranModel::find($request->id);
-        if (!$pendaftaran_data) {
-            return response()->json(['message' => 'Pendaftaran tidak ditemukan'], 404);
-        }
-        $pendaftaran_data = PendaftaranModel::where('id', $request->id)
+        PendaftaranModel::where('id', $idPendaftaran)
             ->update([
-                // "idpasien" => $request->idpasien,
-                "tanggaldaftar" => $request->tanggaldaftar,
-                "jadwal" => $request->jadwal,
-                'status' => ($request->status != "" ? "1" : "0"),
+                'status' => 0,
+                'nomor_antrian' => null,
             ]);
 
-        return redirect()->route('pages.viewpendaftaran')->with('message', 'Data update succeesfully');
+        PendaftaranModel::where('status', 1)
+            ->where('nomor_antrian', '>', $nomorAntrianHapus)
+            ->decrement('nomor_antrian');
+
+        return redirect()->route('pages.viewpendaftaran')->with('message', 'Pendaftaran selesai');
     }
 
-    public function deletependaftaran($id)
+
+        public function deletependaftaran($id)
     {
         $pendaftaran_data = PendaftaranModel::where('id', $id)->first();
+
+        $nomorAntrianHapus = $pendaftaran_data->nomor_antrian;
+
         $pendaftaran_data->delete();
+
+        PendaftaranModel::where('status', 1)
+            ->where('nomor_antrian', '>', $nomorAntrianHapus)
+            ->decrement('nomor_antrian');
+
         return redirect()->route('pages.viewpendaftaran')->with('error', 'Data Canceled');
     }
+    // Pendaftaran Pasien
+    public function viewpendaftaranpasien()
+    {
+        $data = array();
 
-    // public function detailpasien($id)
-    // {
-    //     $data = array();
-    //     $pasien_data = PendaftaranModel::select('*')
-    //                 ->where('id', $id)
-    //                 ->first();
-    //     $data['title'] = "Detail Pasien";
-    //     $data['pasien'] = $pasien_data;
-    //     return view('pasien.detailpasien', $data);
-    // }
+        $userId = auth()->user()->id;
+
+        $pendaftaran_data = DB::table('pendaftaranpasien')
+            ->join('users', 'pendaftaranpasien.iduser', '=', 'users.id')
+            ->select('pendaftaranpasien.*', 'users.name')
+            ->where('users.id', $userId)
+            ->orderBy('pendaftaranpasien.created_at', 'asc')
+            ->orderBy('pendaftaranpasien.tanggaldaftar', 'asc')
+            ->get();
+
+        $reversedPendaftaranData = array_reverse($pendaftaran_data->toArray());
+
+        $perPage = 20;
+        $currentPage = request()->get('page', 1);
+        $pagedData = array_slice($reversedPendaftaranData, ($currentPage - 1) * $perPage, $perPage);
+        $paginatedPendaftaranData = new \Illuminate\Pagination\LengthAwarePaginator($pagedData, count($reversedPendaftaranData), $perPage, $currentPage);
+
+        $data['title'] = "Pendaftaran Pasien";
+        $data['pendaftaranpasien'] = $paginatedPendaftaranData;
+
+        return view('pendaftaran.pasien.viewpendaftaranpasien', $data);
+    }
+
+
+    public function addpendaftaranpasien()
+    {
+        $listNama = User::all();
+        $data = array();
+        $data['title'] = "Tambah pendaftaran";
+        return view('pendaftaran.pasien.addpendaftaranpasien', $data, compact('listNama'));
+    }
+
+    public function savependaftaranpasien(Request $request)
+    {
+        $request->validate([
+            "tanggaldaftar" => "required",
+            "jadwal" => "required",
+        ]);
+
+        $nomorAntrianBaru = PendaftaranModel::where('jadwal', $request->jadwal)
+        ->whereDate('created_at', now()->toDateString())
+        ->whereDate('tanggaldaftar', $request->tanggaldaftar)
+        ->max('nomor_antrian') + 1;
+
+        $pendaftaran_data = PendaftaranModel::create([
+            "iduser" => Auth::id(),
+            "tanggaldaftar" => $request->tanggaldaftar,
+            "jadwal" => $request->jadwal,
+            "nomor_antrian" => $nomorAntrianBaru,
+            'status' => '1',
+        ]);
+
+        if ($pendaftaran_data) {
+            return redirect()->route('pages.viewpendaftaranpasien')->with('message', 'Data added Successfully');
+        } else {
+            return redirect()->route('pendaftaran.pasien.viewpendaftaranpasien')->with('error', 'Data added Error');
+        }
+    }
+
+    public function deletependaftaranpasien($id)
+    {
+        $pendaftaran_data = PendaftaranModel::where('id', $id)->first();
+
+        $nomorAntrianHapus = $pendaftaran_data->nomor_antrian;
+
+        $pendaftaran_data->delete();
+
+        PendaftaranModel::where('status', 1)
+            ->where('nomor_antrian', '>', $nomorAntrianHapus)
+            ->decrement('nomor_antrian');
+        return redirect()->route('pages.viewpendaftaranpasien')->with('error', 'Data Canceled');
+    }
 }

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('pendaftaranpasien', function (Blueprint $table) {
             $table->id();
-            $table->integer('idpasien');
+            $table->integer('iduser');
             $table->date('tanggaldaftar');
             $table->string('jadwal');
             $table->char('status');

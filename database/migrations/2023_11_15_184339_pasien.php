@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('pasien', function (Blueprint $table) {
             $table->id();
             $table->string('nomorrekammedis');
-            $table->string('nama');
+            $table->string('iduser');
             $table->string('tempat');
             $table->date('tanggallahir');
             $table->string('jeniskelamin');

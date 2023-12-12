@@ -1,4 +1,4 @@
-@extends('layouts.app', ['page' => __('Daftar'), 'pageSlug' => 'addpendaftaran'])
+@extends('layouts.app', ['page' => __('Daftar'), 'pageSlug' => 'addpendaftaranpasien'])
 
 @section('content')
     <div class="row">
@@ -7,21 +7,14 @@
                 <div class="card-header">
                     <h5 class="title">{{ __('Pendaftaran Pasien') }}</h5>
                 </div>
-                <form method="post" action="{{ route('pages.savependaftaran') }}" enctype="multipart/form-data">
+                <form method="post" action="{{ route('pages.savependaftaranpasien') }}" enctype="multipart/form-data">
                     <div class="card-body">
                         @csrf
                         @include('alerts.success')
                         <div class="form-group{{ $errors->has('iduser') ? ' has-danger' : '' }}">
                             <label>{{ __('Nama Pasien') }}</label>
-                            <select name="iduser" class="form-control{{ $errors->has('iduser') ? ' is-invalid' : '' }}">
-                                <option value="" selected disabled>{{ __('Pilih Pasien') }}</option>
-                                @foreach($listNama as $nama)
-                                    <option  style="color: black;" value="{{ $nama->id }}" {{ old('iduser') == $nama->id ? 'selected' : '' }}>
-                                        {{ $nama->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                            @include('alerts.feedback', ['field' => 'idpasien'])
+                            <input style="color: white;" type="text" name="iduser" class="form-control{{ $errors->has('iduser') ? ' is-invalid' : '' }}" value="{{ auth()->user()->name }}" readonly>
+                            @include('alerts.feedback', ['field' => 'iduser'])
                         </div>
                         <div class="form-group{{ $errors->has('tanggaldaftar') ? ' has-danger' : '' }}">
                             <label>{{ __('Tanggal daftar') }}</label>
@@ -35,14 +28,6 @@
                             </select>
                             @include('alerts.feedback', ['field' => 'jadwal'])
                         </div>
-                        <div class="form-group{{ $errors->has('status') ? ' has-danger' : '' }}">
-                            <label>{{ __('Status') }}</label>
-                            <label class="form-control switch">
-                                <input name="status" type="checkbox" checked>
-                                <span class="slider round"></span>
-                            </label>
-                            @include('alerts.feedback', ['field' => 'status'])
-                        </div>
 
                     </div>
                     <div class="container">
@@ -51,7 +36,7 @@
                                 <button type="submit" class="btn btn-fill btn-primary"><i class="fas fa-save"></i> {{ __('Save') }}</button>
                             </div>
                             <div class="card-footer">
-                                <a class="btn btn-fill btn-primary" href="{{ route('pages.viewpendaftaran') }}"><i class="tim-icons icon-minimal-left"></i> {{ __('Back') }}</a><br><br>
+                                <a class="btn btn-fill btn-primary" href="{{ route('pages.viewpendaftaranpasien') }}"><i class="tim-icons icon-minimal-left"></i> {{ __('Back') }}</a><br><br>
                             </div>
                         </div>
                     </div>

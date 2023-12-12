@@ -15,25 +15,21 @@
                     <p>{{ __('Dashboard') }}</p>
                 </a>
             </li>
-            <li @if ($pageSlug == 'profile') class="active " @endif>
-                <a href="{{ route('profile.edit')  }}">
-                    <i class="tim-icons icon-single-02"></i>
-                    <p>{{ __('User Profile') }}</p>
+            @if(Auth::user()->role != 'Admin')
+            <li @if ($pageSlug == 'viewpendaftaranpasien') class="active " @endif>
+                <a href="{{ route('pages.viewpendaftaranpasien') }}">
+                    <i class="tim-icons icon-notes"></i>
+                    <p>{{ __('Pendaftaran Pasien') }}</p>
                 </a>
             </li>
-            <li @if ($pageSlug == 'icons') class="active " @endif>
+            @endif
+            {{-- <li @if ($pageSlug == 'icons') class="active " @endif>
                 <a href="{{ route('pages.icons') }}">
                     <i class="tim-icons icon-atom"></i>
                     <p>{{ __('Icons') }}</p>
                 </a>
-            </li>
+            </li> --}}
             @if(Auth::user()->role != 'Tamu')
-            <li @if ($pageSlug == 'users') class="active " @endif>
-                <a href="{{ route('user.index')  }}">
-                    <i class="tim-icons icon-bullet-list-67"></i>
-                    <p>{{ __('User Management') }}</p>
-                </a>
-            </li>
             <li @if ($pageSlug == 'viewpasien') class="active " @endif>
                 <a href="{{ route('pages.viewpasien') }}">
                     <i class="tim-icons icon-book-bookmark"></i>
@@ -44,6 +40,20 @@
                 <a href="{{ route('pages.viewpendaftaran') }}">
                     <i class="tim-icons icon-notes"></i>
                     <p>{{ __('Pendaftaran Pasien') }}</p>
+                </a>
+            </li>
+            @endif
+            <li @if ($pageSlug == 'profile') class="active " @endif>
+                <a href="{{ route('profile.edit')  }}">
+                    <i class="tim-icons icon-single-02"></i>
+                    <p>{{ __('User Profile') }}</p>
+                </a>
+            </li>
+            @if(Auth::user()->role != 'Tamu')
+            <li @if ($pageSlug == 'users') class="active " @endif>
+                <a href="{{ route('user.index')  }}">
+                    <i class="tim-icons icon-bullet-list-67"></i>
+                    <p>{{ __('User Management') }}</p>
                 </a>
             </li>
             @endif

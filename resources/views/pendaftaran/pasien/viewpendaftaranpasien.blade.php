@@ -1,4 +1,4 @@
-@extends('layouts.app', ['page' => __('pendaftaran Pasien'), 'pageSlug' => 'viewpendaftaran'])
+@extends('layouts.app', ['page' => __('pendaftaran Pasien'), 'pageSlug' => 'viewpendaftaranpasien'])
 
 @section('content')
 <div class="row">
@@ -8,7 +8,20 @@
         <h4 class="card-title">Pendaftaran Pasien</h4>
       </div>
       <div class="card-body">
-        <a class="btn btn-success" href="{{ route('pages.addpendaftaran') }}"><i class="tim-icons icon-simple-add"></i> Daftar</a><br><br>
+        @php $showDaftarButton = true; @endphp
+        @foreach($pendaftaranpasien as $pdfn)
+          @if ($pdfn->nomor_antrian || $pdfn->status != 0)
+            @php $showDaftarButton = false; @endphp
+            @break
+          @endif
+        @endforeach
+
+        @if ($showDaftarButton)
+          <a class="btn btn-success" href="{{ route('pages.addpendaftaranpasien') }}">
+            <i class="tim-icons icon-simple-add"></i> Daftar
+          </a>
+          <br><br>
+        @endif
         <div class="table-responsive">
             <table class="table tablesorter " id="">
                 <thead class=" text-primary">
@@ -25,8 +38,6 @@
                     <th>
                         Jadwal
                     </th>
-                    <th>
-                        Nomor Antrian
                     </th>
                     <th>
                         Status
@@ -41,13 +52,14 @@
                             <td>{{$pdfn->name}}</td>
                             <td>{{$pdfn->tanggaldaftar}}</td>
                             <td>{{$pdfn->jadwal}}</td>
-                            <td>{{ $pdfn->nomor_antrian ?? '' }}</td>
                             <td>{{($pdfn->status ==1 ? "AKTIF" : "NON AKTIF")}}</td>
                             <td>
-                                @if($pdfn->status == 1)
-                                <a href="{{ route('pages.finishpendaftaran', $pdfn->id)}}" class="btn btn-success btn-sm"><i class="tim-icons icon-check-2"></i></a>
-                                <a href="{{ route('pages.deletependaftaran', $pdfn->id)}}" onclick="return confirm('Apakah Anda Yakin Membatalkan Pendaftaran?');" class="btn btn-danger btn-sm"><i class="tim-icons icon-simple-remove"></i></a>
+                                @if($pdfn->status == '1')
+                                    <a href="{{ route('pages.deletependaftaranpasien', $pdfn->id)}}" onclick="return confirm('Apakah Anda Yakin Membatalkan Pendaftaran?');" class="btn btn-danger btn-sm">
+                                        <i class="tim-icons icon-simple-remove"></i>
+                                    </a>
                                 @endif
+
                             </td>
                         </tr>
                     @endforeach
@@ -77,6 +89,27 @@
         </div>
       </div>
     </div>
+    @foreach($pendaftaranpasien as $pdfn)
+      @if ($pdfn->nomor_antrian)
+        <div class="row">
+          <div class="col-lg-4"></div>
+          <div class="col-lg-4">
+            <div class="card card-chart">
+              <div class="card-header">
+                <h1 style="font-size: 30px" class="card-category">Nomor Antrian Anda :</h1>
+              </div>
+              <div class="card-body">
+                <div class="chart-area">
+                  <h1 style="font-size: 200px; text-align: center" class="card-title">{{ $pdfn->nomor_antrian}}</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4"></div>
+        </div>
+        @break
+      @endif
+    @endforeach
   </div>
 </div>
 @endsection
