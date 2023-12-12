@@ -16,7 +16,7 @@ return new class extends Migration
             $table->integer('iduser');
             $table->date('tanggaldaftar');
             $table->string('jadwal');
-            $table->integer('nomor_antrian');
+            $table->integer('nomor_antrian')->nullable();
             $table->char('status');
             $table->timestamps();
         });
