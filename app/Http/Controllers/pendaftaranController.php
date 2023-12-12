@@ -52,10 +52,18 @@ class PendaftaranController extends Controller
             "tanggaldaftar" => "required",
             "jadwal" => "required",
         ]);
+
+        $nomorAntrianBaru = PendaftaranModel::where('jadwal', $request->jadwal)
+        ->whereDate('created_at', now()->toDateString())
+        ->whereDate('tanggaldaftar', $request->tanggaldaftar)
+        ->max('nomor_antrian') + 1;
+
+
         $pendaftaran_data = PendaftaranModel::create([
             "iduser" => $request->iduser,
             "tanggaldaftar" => $request->tanggaldaftar,
             "jadwal" => $request->jadwal,
+            "nomor_antrian" => $nomorAntrianBaru,
             'status' => ($request->status != "" ? "1" : "0"),
         ]);
         if ($pendaftaran_data) {
