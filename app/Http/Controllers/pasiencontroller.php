@@ -14,7 +14,7 @@ class PasienController extends Controller
         $pasien_data = PasienModel::select('pasien.*', 'users.name as name')
             ->join('users', 'users.id', '=', 'pasien.iduser')
             ->orderBy('pasien.created_at', 'desc')
-            ->paginate(10);
+            ->paginate(20);
 
         $data['title'] = "List Pasien";
         $data['pasien'] = $pasien_data;
