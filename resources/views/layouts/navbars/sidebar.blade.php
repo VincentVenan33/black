@@ -64,7 +64,7 @@
             </li><li @if ($pageSlug == 'aboutus') class="active " @endif>
                 <a href="{{ route('pages.aboutus') }}">
                     <i class="tim-icons icon-alert-circle-exc"></i>
-                    <p>{{ __('Abous Us') }}</p>
+                    <p>{{ __('About Us') }}</p>
                 </a>
             </li>
         </ul>
