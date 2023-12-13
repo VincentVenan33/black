@@ -39,8 +39,10 @@
                             <td>{{$usr->email}}</td>
                             <td>{{$usr->role}}</td>
                             <td>
+                            @if(Auth::user()->role == 'Super Admin' || (Auth::user()->role == 'Admin' && $usr->role == 'Tamu'))
                                 <a href="{{ route('pages.changeuser', $usr->id)}}" class="btn btn-warning btn-sm"><i class="tim-icons icon-pencil"></i></a>
                                 <a href="{{ route('pages.deleteuser', $usr->id)}}" onclick="return confirm('Apakah Anda Yakin Menghapus User?');" class="btn btn-danger btn-sm"><i class="tim-icons icon-simple-remove"></i></a>
+                            @endif
                             </td>
                         </tr>
                     @endforeach

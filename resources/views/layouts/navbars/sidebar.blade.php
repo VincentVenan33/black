@@ -19,7 +19,7 @@
                     <p>{{ __('Dashboard') }}</p>
                 </a>
             </li>
-            @if(Auth::user()->role != 'Admin')
+            @if(Auth::check() && Auth::user()->role == 'Tamu')
             <li @if ($pageSlug == 'viewpendaftaranpasien') class="active " @endif>
                 <a href="{{ route('pages.viewpendaftaranpasien') }}">
                     <i class="tim-icons icon-notes"></i>
