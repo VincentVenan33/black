@@ -22,7 +22,7 @@ class PendaftaranController extends Controller
             ->select('pendaftaranpasien.*', 'users.name')
             ->orderBy('pendaftaranpasien.created_at', 'desc')
             ->orderBy('pendaftaranpasien.tanggaldaftar', 'asc')
-            ->paginate(50);
+            ->paginate(20);
 
         $data['title'] = "Pendaftaran Pasien";
         $data['pendaftaranpasien'] = $pendaftaran_data;
