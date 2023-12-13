@@ -10,6 +10,7 @@
       <div class="card-body">
         <a class="btn btn-success" href="{{ route('pages.addpendaftaran') }}"><i class="tim-icons icon-simple-add"></i> Daftar</a><br><br>
         <div class="table-responsive">
+            <div id="table-container">
             <table class="table tablesorter " id="">
                 <thead class=" text-primary">
                     <tr>
@@ -53,6 +54,7 @@
                     @endforeach
                 </tbody>
             </table>
+            </div>
             <nav aria-label="Table Paging" class="mb-0 text-muted">
                 <ul class="pagination justify-content-center mb-0">
                     <li class="page-item{{ ($pendaftaranpasien->currentPage() == 1) ? ' disabled' : '' }}">
@@ -79,4 +81,22 @@
     </div>
   </div>
 </div>
+<!-- Update your pagination links to use AJAX -->
+<script>
+    $(document).ready(function () {
+      $(document).on('click', '.pagination a', function (e) {
+        e.preventDefault();
+
+        var url = $(this).attr('href');
+
+        $.ajax({
+          url: url,
+          success: function (data) {
+            $('#table-container').html(data);
+          }
+        });
+      });
+    });
+  </script>
+
 @endsection

@@ -20,19 +20,12 @@ class PendaftaranController extends Controller
         $pendaftaran_data = DB::table('pendaftaranpasien')
             ->join('users', 'pendaftaranpasien.iduser', '=', 'users.id')
             ->select('pendaftaranpasien.*', 'users.name')
-            ->orderBy('pendaftaranpasien.created_at', 'asc')
+            ->orderBy('pendaftaranpasien.created_at', 'desc')
             ->orderBy('pendaftaranpasien.tanggaldaftar', 'asc')
-            ->get();
-
-        $reversedPendaftaranData = array_reverse($pendaftaran_data->toArray());
-
-        $perPage = 20;
-        $currentPage = request()->get('page', 1);
-        $pagedData = array_slice($reversedPendaftaranData, ($currentPage - 1) * $perPage, $perPage);
-        $paginatedPendaftaranData = new \Illuminate\Pagination\LengthAwarePaginator($pagedData, count($reversedPendaftaranData), $perPage, $currentPage);
+            ->paginate(50);
 
         $data['title'] = "Pendaftaran Pasien";
-        $data['pendaftaranpasien'] = $paginatedPendaftaranData;
+        $data['pendaftaranpasien'] = $pendaftaran_data;
 
         return view('pendaftaran.viewpendaftaran', $data);
     }
@@ -45,7 +38,7 @@ class PendaftaranController extends Controller
         return view('pendaftaran.addpendaftaran', $data, compact('listNama'));
     }
 
-    public function savependaftaran(Request $request)
+        public function savependaftaran(Request $request)
     {
         $request->validate([
             "iduser" => "required",
@@ -53,11 +46,19 @@ class PendaftaranController extends Controller
             "jadwal" => "required",
         ]);
 
-        $nomorAntrianBaru = PendaftaranModel::where('jadwal', $request->jadwal)
-        ->whereDate('created_at', now()->toDateString())
-        ->whereDate('tanggaldaftar', $request->tanggaldaftar)
-        ->max('nomor_antrian') + 1;
+        // Check if iduser already has a non-null nomor_antrian
+        $existingNomorAntrian = PendaftaranModel::where('iduser', $request->iduser)
+            ->whereNotNull('nomor_antrian')
+            ->first();
 
+        if ($existingNomorAntrian) {
+            return redirect()->back()->with('error', 'Nama telah terdaftar dan memiliki antrian');
+        }
+
+        $nomorAntrianBaru = PendaftaranModel::where('jadwal', $request->jadwal)
+            ->whereDate('created_at', now()->toDateString())
+            ->whereDate('tanggaldaftar', $request->tanggaldaftar)
+            ->max('nomor_antrian') + 1;
 
         $pendaftaran_data = PendaftaranModel::create([
             "iduser" => $request->iduser,
@@ -66,6 +67,7 @@ class PendaftaranController extends Controller
             "nomor_antrian" => $nomorAntrianBaru,
             'status' => ($request->status != "" ? "1" : "0"),
         ]);
+
         if ($pendaftaran_data) {
             return redirect()->route('pages.viewpendaftaran')->with('message', 'Data added Successfully');
         } else {
@@ -118,17 +120,10 @@ class PendaftaranController extends Controller
             ->where('users.id', $userId)
             ->orderBy('pendaftaranpasien.created_at', 'asc')
             ->orderBy('pendaftaranpasien.tanggaldaftar', 'asc')
-            ->get();
-
-        $reversedPendaftaranData = array_reverse($pendaftaran_data->toArray());
-
-        $perPage = 20;
-        $currentPage = request()->get('page', 1);
-        $pagedData = array_slice($reversedPendaftaranData, ($currentPage - 1) * $perPage, $perPage);
-        $paginatedPendaftaranData = new \Illuminate\Pagination\LengthAwarePaginator($pagedData, count($reversedPendaftaranData), $perPage, $currentPage);
+            ->paginate(5);
 
         $data['title'] = "Pendaftaran Pasien";
-        $data['pendaftaranpasien'] = $paginatedPendaftaranData;
+        $data['pendaftaranpasien'] = $pendaftaran_data;
 
         return view('pendaftaran.pasien.viewpendaftaranpasien', $data);
     }

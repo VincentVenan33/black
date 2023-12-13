@@ -23,6 +23,11 @@
                             </select>
                             @include('alerts.feedback', ['field' => 'idpasien'])
                         </div>
+                        @if(session('error'))
+                            <div style="width: 100%; margin-top: 0.25rem; font-size: 80%; color: #ff8d72;" class="">
+                                {{ session('error') }}
+                            </div>
+                        @endif
                         <div class="form-group{{ $errors->has('tanggaldaftar') ? ' has-danger' : '' }}">
                             <label>{{ __('Tanggal daftar') }}</label>
                             <input type="date" name="tanggaldaftar" class="form-control{{ $errors->has('tanggaldaftar') ? ' is-invalid' : '' }}" value="{{ old('tanggaldaftar') }}">
